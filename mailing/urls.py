@@ -1,5 +1,6 @@
 
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path,include,re_path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -30,7 +31,11 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/',include('accounts.urls')),
     path('api/',include('main.urls')),
+    path('',include('webui.urls')),
     # re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
+
+
