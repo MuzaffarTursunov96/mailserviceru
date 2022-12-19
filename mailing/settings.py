@@ -100,11 +100,37 @@ REST_FRAMEWORK = {
     )
     
 }
+import os
+
+APP_LOG_FILENAME=os.path.join(BASE_DIR,'log/app.log')
+ERROR_LOG_FILENAME=os.path.join(BASE_DIR,'log/error.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+            'filename':APP_LOG_FILENAME
+        },
+    },
+}
 
 
 CRONJOBS = [
     ('*/5 * * * *', 'main.cron.send_message_cron'),
-    ('*/1440 * * * *', 'main.cron.send_messageto_mail')
+    # ('*/1440 * * * *', 'main.cron.send_messageto_mail')
 ]
 
 # Password validation

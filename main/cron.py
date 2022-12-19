@@ -3,8 +3,13 @@ from datetime import datetime
 from .utils import send_message,date_spliter
 from .models import Messages
 
+import logging
+
+logger= logging.getLogger(__name__)
+
 
 def send_message_cron():
+  logger.info('Cron job is called')
   mails = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False).select_related('mail').select_related('customer')
   for mail in mails:
     messages = Messages.objects.filter(mail = mail)
