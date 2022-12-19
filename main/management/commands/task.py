@@ -5,6 +5,7 @@ from  main.utils import send_message,date_spliter
 from datetime import datetime
 
 
+
 class SendMessages:
     def send_message(self):
         mails = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False).select_related('mail').select_related('customer')
