@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'main',
     'tz_detect', 
     "corsheaders",
-    'kronos'
+    "django_cron",
 ]
 
 MIDDLEWARE = [
