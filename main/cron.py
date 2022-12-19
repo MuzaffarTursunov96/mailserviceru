@@ -1,7 +1,7 @@
-from .models import Mails
+from .models import Mails,Messages
 from datetime import datetime
 from .utils import send_message,date_spliter
-from .models import Messages
+
 
 import logging
 
