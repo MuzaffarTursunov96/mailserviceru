@@ -67,6 +67,7 @@ class DetailMessage(generics.RetrieveAPIView):
     queryset = Messages.objects.all()
     serializer_class = MessageSerializer 
     lookup_url_kwarg='pk'
+    authentication_classes=
 
 
 
