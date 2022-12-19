@@ -1,6 +1,5 @@
 from django.urls import path
-from . import views
-
+from main import views
 
 urlpatterns =[
   path('mail-create/',views.CreateMail.as_view(),name='create-mail'),
