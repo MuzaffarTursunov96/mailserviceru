@@ -5,6 +5,7 @@ from rest_framework import authentication, permissions
 from .models import Customer
 from .serializers import CustomerSerializer
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 
 
@@ -20,14 +21,17 @@ class DetailCustomers(generics.RetrieveAPIView):
 
 class CreateCustomers(generics.CreateAPIView):
     queryset = Customer.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
 
 class UpdateCustomers(generics.UpdateAPIView):
     queryset = Customer.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
     lookup_url_kwarg='pk'
 
 class DeleteCustomers(generics.DestroyAPIView):
     queryset = Customer.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
     lookup_url_kwarg='pk'

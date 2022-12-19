@@ -7,18 +7,22 @@ from rest_framework.decorators import api_view
 from accounts.models import Customer
 from datetime import datetime
 from .utils import date_spliter,split_filter_text
+from rest_framework.permissions import IsAuthenticated
 
 
 
 class CreateMail(generics.CreateAPIView):
     queryset = Mails.objects.all()
     serializer_class = MailSerializer 
+    permission_classes = (IsAuthenticated,)
     
 
 class DeleteMail(generics.DestroyAPIView):
     queryset = Mails.objects.all()
     serializer_class = MailSerializer 
+    permission_classes = (IsAuthenticated,)
     lookup_url_kwarg='pk'
+    
 
 class DetailMail(generics.RetrieveAPIView):
     queryset = Mails.objects.all()
@@ -37,6 +41,7 @@ def StatisticsMail(request):
 class UpdateMail(generics.UpdateAPIView):
     queryset = Mails.objects.all()
     serializer_class = MailSerializer 
+    permission_classes = (IsAuthenticated,)
     lookup_url_kwarg='pk'
 
 
@@ -50,15 +55,18 @@ class MessageList(generics.ListAPIView):
 
 class MessageCreate(generics.CreateAPIView):
     queryset = Messages.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = MessageSerializer 
 
 class DeleteMessage(generics.DestroyAPIView):
     queryset = Messages.objects.all()
     serializer_class = MessageSerializer 
+    permission_classes = (IsAuthenticated,)
     lookup_url_kwarg='pk'
 
 class UpdateMessage(generics.UpdateAPIView):
     queryset = Messages.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = MessageSerializer 
     lookup_url_kwarg='pk'
 
@@ -67,7 +75,7 @@ class DetailMessage(generics.RetrieveAPIView):
     queryset = Messages.objects.all()
     serializer_class = MessageSerializer 
     lookup_url_kwarg='pk'
-    authentication_classes=
+    permission_classes = (IsAuthenticated,)
 
 
 
