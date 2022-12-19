@@ -1,6 +1,4 @@
 
-from pathlib import Path
-import os
 import re
 import requests as rq
 from decouple import config

@@ -1,28 +1,13 @@
-from .models import Mails,Messages
-from datetime import datetime
-from .utils import send_message,date_spliter
 
 
-import logging
-
-logger= logging.getLogger(__name__)
 
 
-def send_message_cron():
-  logger.info('Cron job is called')
-  mails = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False).select_related('mail').select_related('customer')
-  for mail in mails:
-    messages = Messages.objects.filter(mail = mail)
-    if send_message(messages):
-      mail.used =True
-      mail.save()
 
-    now =datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    t2=mail.end_date.strftime("%Y-%m-%d %H:%M:%S")
-    if date_spliter(now,t2):
-      mail.used =True
-      mail.save()
 
+
+import kronos
+
+@kronos.register('* 5 * * *')
 def send_messageto_mail():
   pass
 
