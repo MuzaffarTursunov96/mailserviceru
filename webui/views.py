@@ -16,13 +16,21 @@ def index(request):
      
 
 def login_view(request):
-    email = request.POST['email']
-    password = request.POST['password']
-    user = authenticate(request, email=email, password=password)
-    if user is not None:
-        login(request, user)
+    if request.method =='POST':
+        
+        email = request.POST.get('email',None)
+        password = request.POST.get('password',None)
+
+        print(email,password)
+
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            return redirect('login')
     else:
-        redirect('login')
+        return render(request,'signin.html')
     
 
 def logout_view(request):
