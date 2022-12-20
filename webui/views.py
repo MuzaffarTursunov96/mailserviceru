@@ -1,7 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+from main.models import Mails,Messages
 
 
 def index(request):
+    
+
     return render(request,'index.html')
