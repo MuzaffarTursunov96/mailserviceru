@@ -37,7 +37,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-
+    return redirect('login')
 
 def forgot_password(request):
   if request.method == 'POST':
