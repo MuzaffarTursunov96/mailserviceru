@@ -99,4 +99,12 @@ def reset_password(request):
   return render(request,'accounts/reset_password.html')
 
 
+def singup(request):
+    if request.method =='POST':
+        pass
+   
+
+    return render(request,'signup.html')
+
+
 
