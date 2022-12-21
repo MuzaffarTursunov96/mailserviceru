@@ -83,7 +83,8 @@ SWAGGER_SETTINGS = {
       'Bearer': {
             'type': 'apiKey',
             'name': 'Authorization',
-            'in': 'header'
+            'in': 'header',
+            'scheme':"Bearer"
       }
    }
 }
