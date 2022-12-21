@@ -103,7 +103,11 @@
                     <i class="fa fa-chart-line fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Todays Mail</p>
-                        <h6 class="mb-0">1234</h6>
+                        {%if today_count %}
+                        <h6 class="mb-0">{{today_count}}</h6>
+                        {%else%}
+                        <h6 class="mb-0">0</h6>
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -112,7 +116,11 @@
                     <i class="fa fa-chart-bar fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Total Mails</p>
+                        {%if all_mail%}
                         <h6 class="mb-0">{{all_mail}}</h6>
+                        {% else %}
+                        <h6 class="mb-0">0</h6>
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -121,7 +129,11 @@
                     <i class="fa fa-chart-area fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Today Sent Mails</p>
-                        <h6 class="mb-0">1234</h6>
+                        {%if today_used %}
+                        <h6 class="mb-0">{{today_used}}</h6>
+                        {%else%}
+                        <h6 class="mb-0">0</h6>
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -130,7 +142,12 @@
                     <i class="fa fa-chart-pie fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Total Sent Mails</p>
-                        <h6 class="mb-0">1234</h6>
+                        {% if total_sent_mails %}
+                        <h6 class="mb-0">{{total_sent_mails}}</h6>
+                        {% else %}
+                        <h6 class="mb-0">0</h6>
+                        {%endif%}
+
                     </div>
                 </div>
             </div>
