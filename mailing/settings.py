@@ -75,18 +75,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mailing.wsgi.application'
 
-
 SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        "Auth Token eg [Bearer {JWT}]": {
-            "type": "apiKey",
-            "name": "Authorization",
-            'scheme': 'Bearer',
-            "in": "header"
-        }
-    }
+   'SECURITY_DEFINITIONS': {
+      'Basic': {
+            'type': 'basic'
+      },
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
