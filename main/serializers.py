@@ -14,7 +14,7 @@ class MailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Mails
-        fields = ['id','start_date', 'text_approval', 'fil_code_teg', 'end_date','info','used']
+        fields = ['start_date', 'text_approval', 'fil_code_teg', 'end_date','info']
         depth = 1
 
     def get_info(self,obj):
