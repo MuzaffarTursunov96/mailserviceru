@@ -77,17 +77,13 @@ WSGI_APPLICATION = 'mailing.wsgi.application'
 
 
 SWAGGER_SETTINGS = {
-    "SECURITY_DEFINITIONS": {
-        "JWT": {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token eg [Bearer {JWT}]": {
+            "type": "apiKey",
             "name": "Authorization",
-            "description": "JWT authorization",
-            "type": "http",
-            "scheme": "bearer",
-            "bearerFormat": "JWT",
-            "in": "header",
+            "in": "header"
         }
-    },
-    "USE_SESSION_AUTH": False,
+    }
 }
 
 
