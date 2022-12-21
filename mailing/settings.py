@@ -77,12 +77,13 @@ WSGI_APPLICATION = 'mailing.wsgi.application'
 
 SWAGGER_SETTINGS = {
    'SECURITY_DEFINITIONS': {
-        'JWT': {
-            'type': 'http',
-            'scheme': 'Bearer',
-            'in': 'header',                  
-              }
-    },
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'scheme':"Bearer"
+      }
+   }
 }
 
 # Database
