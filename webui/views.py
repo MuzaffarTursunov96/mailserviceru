@@ -137,7 +137,18 @@ def tables(requests):
 def charts(requests):
   return render(requests,'chart.html')
 
-def pages(requests):
+
+
+def not_found(requests):
+  return render(requests,'404.html')
+
+def button(requests):
+  return render(requests,'button.html')
+
+def blank(requests):
+  return render(requests,'blank.html')
+
+def typography(requests):
   return render(requests,'typography.html')
 
 

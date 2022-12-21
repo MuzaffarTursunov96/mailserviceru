@@ -23,7 +23,10 @@ urlpatterns =[
     path('forms/',views.forms,name='forms'),
     path('tables/',views.tables,name='tables'),
     path('charts/',views.charts,name='charts'),
-    path('pages/',views.pages,name='pages'),
+    path('not_found/',views.not_found,name='not_found'),
+    path('button/',views.button,name='button'),
+    path('blank/',views.blank,name='blank'),
+    path('typography/',views.typography,name='typography'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
