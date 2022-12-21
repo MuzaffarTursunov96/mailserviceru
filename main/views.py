@@ -6,6 +6,7 @@ from .models import Mails,Messages
 from rest_framework.decorators import api_view
 from accounts.models import Customer
 from datetime import datetime
+import datetime as ddate
 from .utils import date_spliter,split_filter_text
 from rest_framework.permissions import IsAuthenticated
 
@@ -89,7 +90,9 @@ def TestMail(request):
 
 @api_view(['GET'])
 def MailIsActive(request):
-    mails = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False)
+    yesterday = ddate.date.today() - ddate.timedelta(days=1)
+    today_start=ddate.date.today()
+    mails = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=False)
     mailserializer = MailSerializer(mails)
     if mails.count() > 0:
         return Response({'data':mailserializer.data})

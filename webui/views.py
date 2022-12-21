@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 import uuid
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+import datetime as ddate
 from main.serializers import MailSerializer
 from accounts.models import User
 from django.utils.http import urlsafe_base64_decode
@@ -18,21 +19,24 @@ from .utils import send_verification_email
 
 @login_required(login_url='login')
 def index(request):
-    todays_mails_active = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False)
-    todays_mails_used = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=True)
-    mails = Mails.objects.all()
-    all_mail =mails.count()
-    count_today =todays_mails_active.count() + todays_mails_used.count()
-    mailserializer = MailSerializer(mails,many=True)
+  yesterday = ddate.date.today() - ddate.timedelta(days=1)
+  today_start=ddate.date.today()
+  todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=False)
+  todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=True)
+  mails = Mails.objects.all()
+  all_mail =mails.count()
+  count_today =todays_mails_active.count() + todays_mails_used.count()
+  mailserializer = MailSerializer(mails,many=True)
 
-    context ={
-        'today_active':todays_mails_active,
-        'today_used':todays_mails_used,
-        'today_count':count_today,
-        'mails':mailserializer.data,
-        'all_mail':all_mail
-    }
-    return render(request,'index.html',context)
+  context ={
+      'today_active':todays_mails_active,
+      'today_used':todays_mails_used,
+      'today_count':count_today,
+      'mails':mailserializer.data,
+      'all_mail':all_mail
+  }
+  print(context)
+  return render(request,'index.html',context)
      
 
 def login_view(request):
