@@ -81,6 +81,7 @@ SWAGGER_SETTINGS = {
         "Auth Token eg [Bearer {JWT}]": {
             "type": "apiKey",
             "name": "Authorization",
+            'scheme': 'Bearer',
             "in": "header"
         }
     }
