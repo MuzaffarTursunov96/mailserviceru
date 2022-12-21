@@ -21,7 +21,7 @@ def index(request):
     todays_mails_active = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=False)
     todays_mails_used = Mails.objects.filter(start_date__lte=datetime.now(),end_date__gte=datetime.now(),used=True)
     mails = Mails.objects.all()
-    all =mails.count()
+    all_mail =mails.count()
     count_today =todays_mails_active.count() + todays_mails_used.count()
     mailserializer = MailSerializer(mails,many=True)
 
@@ -30,7 +30,7 @@ def index(request):
         'today_used':todays_mails_used,
         'today_count':count_today,
         'mails':mailserializer.data,
-        'all':all
+        'all_mail':all_mail
     }
     return render(request,'index.html',context)
      
