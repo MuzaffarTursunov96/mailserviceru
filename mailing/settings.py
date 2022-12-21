@@ -76,6 +76,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mailing.wsgi.application'
 
 
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "JWT": {
+            "name": "Authorization",
+            "description": "JWT authorization",
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "in": "header",
+        }
+    },
+    "USE_SESSION_AUTH": False,
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
