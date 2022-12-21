@@ -122,4 +122,19 @@ def singup(request):
     return render(request,'signup.html')
 
 
+def elements(requests):
+  return render(requests,'element.html')
+
+def widgets(requests):
+  return render(requests,'widget.html')
+
+def forms(requests):
+  return render(requests,'form.html')
+
+def tables(requests):
+  return render(requests,'table.html')
+
+def pages(requests):
+  return render(requests,'typography.html')
+
 

@@ -12,6 +12,18 @@ urlpatterns =[
     path('reset_password_validate/<uidb64>/<token>/',views.reset_password_validate,name='reset_password_validate'),
     path('reset_password/',views.reset_password,name='reset_password'),
     path('singup/',views.singup,name='singup'),
+
+
+
+
+
+    # templates
+    path('elements/',views.elements,name='elements'),
+    path('widgets/',views.widgets,name='widgets'),
+    path('forms/',views.forms,name='forms'),
+    path('tables/',views.tables,name='tables'),
+    path('charts/',views.charts,name='charts'),
+    path('pages/',views.pages,name='pages'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
