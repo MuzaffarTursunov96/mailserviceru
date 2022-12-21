@@ -134,6 +134,9 @@ def forms(requests):
 def tables(requests):
   return render(requests,'table.html')
 
+def charts(requests):
+  return render(requests,'chart.html')
+
 def pages(requests):
   return render(requests,'typography.html')
 
