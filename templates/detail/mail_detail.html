@@ -234,8 +234,10 @@
             $("#yearSelect").on("change", function (elem) {
                 BindDays();
                 console.log('hello');
+                var yearDropDown = $("#yearSelect");
+                yearDropDown.empty();
                 for(var i=2022; i<=2050; i++){
-                    elem.append("<option value=" + i + ">" + i + "</option>");
+                    yearDropDown.append("<option value=" + i + ">" + i + "</option>");
                 }
             });
             BindDays();
