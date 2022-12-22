@@ -108,19 +108,19 @@
                     <div class="p-2">
                         <h6 class="mb-4">Year</h6>
                         <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="yearSelect">
-                            <option selected>2022</option>
+                            <option selected>{{mail.start_date|date:"Y"}}</option>
                         </select>
                     </div>
                     <div class="p-2">
                         <h6 class="mb-4">Month</h6>
                         <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="monthSelect">
-                            <option selected>1</option>
+                            <option selected>{{mail.start_date|date:"m"}}</option>
                         </select>
                     </div>
                     <div class="p-2">
                         <h6 class="mb-4">Day</h6>
                         <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="daySelect">
-                            <option selected>1</option>
+                            <option selected>{{mail.start_date|date:"d"}}</option>
                         </select></div>
                 </div>
                 <label  class="form-label">End date</label>
