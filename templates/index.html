@@ -180,7 +180,7 @@
                         <tr>
                             {% for active in today_active %}
                             <td><input class="form-check-input" type="checkbox"></td>
-                            <td>{{active|date:"M d, Y"}}</td>
+                            <td>{{active.start_date|date:"M d, Y"}}</td>
                             <td>INV-0123</td>
                             <td>Jhon Doe</td>
                             <td>$123</td>
