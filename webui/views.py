@@ -12,7 +12,7 @@ from accounts.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from .utils import send_verification_email
-
+from accounts.models import Customer
 
 
 
@@ -28,6 +28,8 @@ def index(request):
   all_mail =mails.count()
   count_today =todays_mails_active.count() + todays_mails_used.count()
   # mailserializer = MailSerializer(mails,many=True)
+  customers =Customer.objects.all()
+  messages =Messages.objects.all()
 
   context ={
       'today_active':todays_mails_active,
@@ -35,7 +37,9 @@ def index(request):
       'today_count':count_today,
       'mails':mails,
       'all_mail':all_mail,
-      'total_sent_mails':total_sent_mails
+      'total_sent_mails':total_sent_mails,
+      'customer':customers,
+      'messages':messages
   }
   return render(request,'index.html',context)
      
@@ -156,4 +160,10 @@ def blank(requests):
 def typography(requests):
   return render(requests,'typography.html')
 
+
+
+
+
+def add_mail(request):
+  return render(request,'elements/add_mail.html')
 

@@ -27,6 +27,15 @@ urlpatterns =[
     path('button/',views.button,name='button'),
     path('blank/',views.blank,name='blank'),
     path('typography/',views.typography,name='typography'),
+
+
+
+
+    # add elements
+    path('add_mail/',views.add_mail,name='add-mail'),
+    path('add_message/',views.add_message,name='add_message'),
+    path('add_customer/',views.add_customer,name='add_customer'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
