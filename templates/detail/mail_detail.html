@@ -154,7 +154,7 @@
                                 <input type="text" class="form-control" id="fil_code_text" name="fil_code_text" required value="{{mail.fil_code_teg}}">
                             </div>
                             
-                            <button type="submit" onclick="mail_update()" class="btn btn-primary">Update Mail</button>
+                            <button type="button" onclick="mail_update()" class="btn btn-primary">Update Mail</button>
                 
                 </div>
                 </div>
@@ -401,7 +401,7 @@
             
             $.ajax({
             url: url,
-            type: "post",
+            type: "put",
             data: values ,
             success: function (response) {
                 error.innerHTML=res;
