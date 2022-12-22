@@ -91,8 +91,8 @@ def TestMail(request):
 @api_view(['GET'])
 def MailIsActive(request):
     yesterday = ddate.date.today() - ddate.timedelta(days=1)
-    today_start=ddate.date.today()
-    mails = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=False)
+    today_start=ddate.date.today() + ddate.timedelta(days=1)
+    mails = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
     mailserializer = MailSerializer(mails)
     if mails.count() > 0:
         return Response({'data':mailserializer.data})

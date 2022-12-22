@@ -20,9 +20,9 @@ from .utils import send_verification_email
 @login_required(login_url='login')
 def index(request):
   yesterday = ddate.date.today() - ddate.timedelta(days=1)
-  today_start=ddate.date.today()
-  todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=False)
-  todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lte=today_start,used=True)
+  today_start=ddate.date.today() + ddate.timedelta(days=1)
+  todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
+  todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
   mails = Mails.objects.all()
   total_sent_mails =Mails.objects.filter(used=True).count()
   all_mail =mails.count()
