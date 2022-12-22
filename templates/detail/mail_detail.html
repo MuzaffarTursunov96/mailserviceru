@@ -228,16 +228,21 @@
 {% block utils%}
 <script>
      $(function () {
+                var monthSelect = $("#monthSelect");
+                monthSelect.empty();
+
+                
+                for(var i=1; i<=12; i++){
+                    monthSelect.append("<option value=" + i + ">" + i + "</option>");
+                }
+
+                
             $("#monthSelect").on("change", function () {
                 BindDays();
             });
             $("#yearSelect").on("change", function (elem) {
                 BindDays();
-                var monthSelect = $("#monthSelect");
-                monthSelect.empty();
-                for(var i=1; i<=12; i++){
-                    monthSelect.append("<option value=" + i + ">" + i + "</option>");
-                }
+                
             });
             BindDays();
         });
