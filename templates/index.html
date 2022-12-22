@@ -244,7 +244,7 @@
     {%endif%}
     <!-- Toyas used End -->
     <!-- All Mails Start -->
-    {% if today_active %}
+    {% if mails %}
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -269,7 +269,7 @@
                         <tr>
                             
                             <td><input class="form-check-input" type="checkbox"></td>
-                            <!-- {{mail}} -->
+                            {{mail}}
                             <td>{{mail.start_date|date:"M d, Y"}}</td>
                             <!-- <td>{{active.end_date|date:"M d, Y"}}</td>
                             <td>{{active.fil_code_teg}}</td>
