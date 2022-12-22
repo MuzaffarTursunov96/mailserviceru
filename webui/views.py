@@ -167,3 +167,9 @@ def typography(requests):
 def add_mail(request):
   return render(request,'elements/add_mail.html')
 
+def add_message(request):
+  return render(request,'elements/add_message.html')
+
+def add_customer(request):
+  return render(request,'elements/add_customer.html')
+
