@@ -37,7 +37,6 @@ def index(request):
       'all_mail':all_mail,
       'total_sent_mails':total_sent_mails
   }
-  print(context)
   return render(request,'index.html',context)
      
 
