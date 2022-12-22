@@ -185,9 +185,9 @@
                             <td>{{active.fil_code_teg}}</td>
                             <td>{{active.text_approval}}</td>
                             {%if ative.used %}
-                            <td>Active</td>
+                            <td> <span class="badge badge-success">Active</span></td>
                             {%else%}
-                            <td>Not Active</td>
+                            <td><span class="badge badge-danger">Not Active</span></td>
                             {%endif%}
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                             {%endfor%}
