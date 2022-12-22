@@ -173,3 +173,34 @@ def add_message(request):
 def add_customer(request):
   return render(request,'elements/add_customer.html')
 
+
+
+# Details
+
+def customer_detail(request,pk):
+  return render(request,'detail/customer_detail.html')
+  
+def message_detail(request,pk):
+  return render(request,'detail/message_detail.html')
+
+
+def mail_detail(request,pk):
+  return render(request,'detail/mail_detail.html')
+
+
+# list
+def mail_list(request):
+  return render(request,'list/mail_list.html')
+
+def customer_list(request):
+  return render(request,'list/customer_list.html')
+
+
+def message_list(request):
+  return render(request,'list/message_list.html')
+  
+
+
+
+
+

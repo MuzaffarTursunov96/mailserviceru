@@ -32,9 +32,20 @@ urlpatterns =[
 
 
     # add elements
+    # mail
     path('add_mail/',views.add_mail,name='add_mail'),
+    path('mail-list/',views.mail_list,name='mail_list'),
+    path('mail_detail/<int:pk>',views.mail_detail,name='mail_deatil'),
+
+    # message
     path('add_message/',views.add_message,name='add_message'),
+    path('message-list/',views.message_list,name='message_list'),
+    path('message-detail/<int:pk>',views.message_detail,name='message_detail'),
+
+    # customer
     path('add_customer/',views.add_customer,name='add_customer'),
+    path('customer-list/',views.customer_list,name='customer_list'),
+    path('customer-detail/<int:pk>',views.customer_detail,name='customer_detail'),
 
 ]
 
