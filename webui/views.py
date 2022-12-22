@@ -27,13 +27,13 @@ def index(request):
   total_sent_mails =Mails.objects.filter(used=True).count()
   all_mail =mails.count()
   count_today =todays_mails_active.count() + todays_mails_used.count()
-  mailserializer = MailSerializer(mails,many=True)
+  # mailserializer = MailSerializer(mails,many=True)
 
   context ={
       'today_active':todays_mails_active,
       'today_used':todays_mails_used,
       'today_count':count_today,
-      'mails':mailserializer.data,
+      'mails':mails,
       'all_mail':all_mail,
       'total_sent_mails':total_sent_mails
   }

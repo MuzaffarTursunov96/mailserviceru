@@ -265,13 +265,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for mail in mails.items() %}
+                        {% for mail in mails %}
                         <tr>
                             
                             <td><input class="form-check-input" type="checkbox"></td>
-                            {{mail}}
                             <td>{{mail.start_date|date:"M d, Y"}}</td>
-                            <!-- <td>{{active.end_date|date:"M d, Y"}}</td>
+                            <td>{{active.end_date|date:"M d, Y"}}</td>
                             <td>{{active.fil_code_teg}}</td>
                             <td>{{active.text_approval}}</td>
                             {%if ative.used %}
@@ -279,7 +278,7 @@
                             {%else%}
                             <td><span class="badge badge-danger">Not Active</span></td>
                             {%endif%}
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> -->
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> 
                             
                         </tr>
                         {%endfor%}
