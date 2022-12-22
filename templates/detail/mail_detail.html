@@ -225,34 +225,50 @@
 {% block utils%}
 <script>
      $(function () {
-                // var monthSelect = $("#monthSelect");
-                // monthSelect.empty();
-                // for(var i=1; i<=12; i++){
-                //     monthSelect.append("<option value=" + i + ">" + i + "</option>");
-                // }
+                var monthSelect = $("#monthSelect");
+                var oldmonth =monthSelect.val();
+                monthSelect.empty();
+                for(var i=1; i<=12; i++){
+                    if (String(i)==String(oldmonth)){
+                        monthSelect.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        monthSelect.append("<option value=" + i + ">" + i + "</option>");
+                    }
+                }
 
-                // var yearSelect = $("#yearSelect");
-                // yearSelect.empty();
-                // for(var i=2022; i<=2050; i++){
-                //     yearSelect.append("<option value=" + i + ">" + i + "</option>");
-                // }
-                // var daySelect = $("#daySelect");
-                // daySelect.empty();
-                // for(var i=1; i<=28; i++){
-                //     daySelect.append("<option value=" + i + ">" + i + "</option>");
-                // }
+                var yearSelect = $("#yearSelect");
+                var oldyear =yearSelect.val();
+                yearSelect.empty();
+                for(var i=2022; i<=2050; i++){
+                    if (String(i)==String(oldyear)){
+                        yearSelect.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        yearSelect.append("<option  value=" + i + ">" + i + "</option>");
+
+                    }
+                }
+                var daySelect = $("#daySelect");
+                var oldday =daySelect.val();
+                daySelect.empty();
+                for(var i=1; i<=28; i++){
+                    if (String(i)==String(oldday)){
+                        daySelect.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        daySelect.append("<option value=" + i + ">" + i + "</option>");
+                    }
+                }
 
 
 
 
-            // $("#monthSelect").on("change", function () {
-            //     BindDays();
-            // });
-            // $("#yearSelect").on("change", function (elem) {
-            //     BindDays();
+            $("#monthSelect").on("change", function () {
+                BindDays();
+            });
+            $("#yearSelect").on("change", function (elem) {
+                BindDays();
                 
-            // });
-            // BindDays();
+            });
+            BindDays();
         });
 
         function BindDays() {
