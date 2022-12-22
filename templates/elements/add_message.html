@@ -98,9 +98,38 @@
     <!-- Blank Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="col-md-6 text-center">
-                <h3>This is blank page</h3>
+          <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-secondary rounded h-100 p-4">
+                        <h6 class="mb-4">Messsage Add</h6>
+                        <form>
+                            <div class="mb-3">
+                                <label for="created_date" class="form-label">Created date to send</label>
+                                <input type="text" class="form-control" id="created_date" name="created_date"
+                                    aria-describedby="emailHelp" required>
+                                <div id="emailHelp" class="form-text">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status" name="status" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mail" class="form-label">Mail</label>
+                                <input type="text" class="form-control" id="mail" name="mail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="customer" class="form-label">Customer</label>
+                                <input type="text" class="form-control" id="customer" name="customer" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Create Message</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+          </div>
         </div>
     </div>
     <!-- Blank End -->
