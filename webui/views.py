@@ -178,14 +178,35 @@ def add_customer(request):
 # Details
 
 def customer_detail(request,pk):
-  return render(request,'detail/customer_detail.html')
+  if Customer.objects.filter(id=pk).exists():
+    customer =Customer.objects.get(id=pk)
+  else:
+     return render(request,'404.html')
+  context ={
+    'customer':customer
+  }
+  return render(request,'detail/customer_detail.html',context)
   
 def message_detail(request,pk):
-  return render(request,'detail/message_detail.html')
+  if Messages.objects.filter(id=pk).exists():
+    message =Messages.objects.get(id=pk)
+  else:
+     return render(request,'404.html')
+  context ={
+    'message':message
+  }
+  return render(request,'detail/message_detail.html',context)
 
 
 def mail_detail(request,pk):
-  return render(request,'detail/mail_detail.html')
+  if Mails.objects.filter(id=pk).exists():
+    mail =Mails.objects.get(id=pk)
+  else:
+     return render(request,'404.html')
+  context ={
+    'mail':mail
+  }
+  return render(request,'detail/mail_detail.html',context)
 
 
 # list
