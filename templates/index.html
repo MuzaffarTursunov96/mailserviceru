@@ -352,6 +352,7 @@
                             <td>{{message.created_date_to_send|date:"M d, Y"}}</td>
                             <td>{{message.mail}}</td>
                             <td>{{message.customer.teg}}</td>
+                            {%comment%}
                             <!-- <td>{{message.status}}</td> -->
                             {%if message.status =='processing' %}
                             <td> <button type="button" class="btn btn-success m-2 btn-sm">Processing</button></td>
@@ -361,6 +362,7 @@
                             {%else%}
                             <td><button type="button" class="btn btn-info m-2 btn-sm">To be sent</button></td>
                             {%endif%}
+                            {%endcomment%}
                             <td><a class="btn btn-sm btn-primary" href=""><i class="fa fa-eye"></i> Detail</a><a href=""><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
                             
                         </tr>
