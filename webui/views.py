@@ -13,6 +13,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from .utils import send_verification_email
 from accounts.models import Customer
+from .forms import MailForm
 
 
 
@@ -201,10 +202,12 @@ def message_detail(request,pk):
 def mail_detail(request,pk):
   if Mails.objects.filter(id=pk).exists():
     mail =Mails.objects.get(id=pk)
+    form = MailForm(instance=mail)
   else:
      return render(request,'404.html')
   context ={
-    'mail':mail
+    'mail':mail,
+    'form':form
   }
   return render(request,'detail/mail_detail.html',context)
 

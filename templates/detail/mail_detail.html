@@ -94,9 +94,12 @@
     </nav>
     <!-- Navbar End -->
 
-
+    <form action="">
+        {%csrf_token%}
+        {{form}}
+    </form>
     <!-- Blank Start -->
-    <div class="container-fluid pt-4 px-4">
+    <!-- <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
           <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
@@ -144,7 +147,7 @@
                         </select></div>
                 </div>
                 <div class="col-sm-12 col-xl-6">
-                    <!-- <div class="bg-secondary rounded h-100 p-4"> -->
+                     <div class="bg-secondary rounded h-100 p-4"> 
                             <div class="mb-3">
                                 <label for="text_approval" class="form-label">Text Approval</label>
                                 <input type="text" class="form-control" id="text_approval" name="text_approval" required value="{{mail.text_approval}}">
@@ -165,7 +168,7 @@
           </div>
             <div class="alert alert-primary" role="alert" id="error" style="display:none;"></div>
         </div>
-    </div>
+    </div> -->
     
     {% if mail.messages_m.all %}
     <div class="container-fluid pt-4 px-4">
@@ -223,7 +226,7 @@
 {% endblock %}
 
 {% block utils%}
-<script>
+<!-- <script>
      $(function () {
                 var monthSelect = $("#monthSelect");
                 var monthSelect2 = $("#monthSelect2");
@@ -434,5 +437,5 @@
             });
            
         }
-</script>
+</script> -->
 {%endblock%}
