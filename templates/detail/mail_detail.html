@@ -154,8 +154,8 @@
                                 <input type="text" class="form-control" id="fil_code_text" name="fil_code_text" required value="{{mail.fil_code_teg}}">
                             </div>
                             
-                            <button type="submit" class="btn btn-primary">Update Mail</button>
-                    <!-- </div> -->
+                            <button type="submit" onclick="mail_update()" class="btn btn-primary">Update Mail</button>
+                
                 </div>
                 </div>
                 </form>
@@ -163,7 +163,7 @@
 
 
           </div>
-
+            <div class="alert alert-primary" role="alert" id="error" style="display:none;"></div>
         </div>
     </div>
     
@@ -386,6 +386,32 @@
                     }
                 }
             }
+        }
+
+        function mail_update(){
+            var error =document.getElementById('error');
+            var url ="{% url 'update-mail' mail.id %}"
+            var values=
+                {
+                "start_date": "2022-12-22T17:10:03.640Z",
+                "text_approval": "string",
+                "fil_code_teg": "string",
+                "end_date": "2022-12-22T17:10:03.641Z"
+                }
+            
+            $.ajax({
+            url: url,
+            type: "post",
+            data: values ,
+            success: function (response) {
+                error.innerHTML=res;
+                error.style='display:block';
+            // You will get response from your PHP page (what you echo or print)
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            }
+         });
         }
 </script>
 {%endblock%}
