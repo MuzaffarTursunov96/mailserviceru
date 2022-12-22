@@ -35,7 +35,7 @@ urlpatterns =[
     # mail
     path('add_mail/',views.add_mail,name='add_mail'),
     path('mail-list/',views.mail_list,name='mail_list'),
-    path('mail_detail/<int:pk>',views.mail_detail,name='mail_deatil'),
+    path('mail_detail/<int:pk>',views.mail_detail,name='mail_detail'),
 
     # message
     path('add_message/',views.add_message,name='add_message'),
