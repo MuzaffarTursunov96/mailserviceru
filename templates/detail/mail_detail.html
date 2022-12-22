@@ -156,7 +156,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for message in messages %}
+                        {% for message in mail.messages_m.all %}
                         <tr>
                             <td><input class="form-check-input" type="checkbox"></td>
                             <td>{{message.created_date_to_send|date:"M d, Y"}}</td>
