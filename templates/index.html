@@ -267,7 +267,7 @@
                             {% for mail in mails %}
                             <td><input class="form-check-input" type="checkbox"></td>
                             <!-- {{mail}} -->
-                            <td>{{mail['start_date']|date:"M d, Y"}}</td>
+                            <td>{{mail.start_date|date:"M d, Y"}}</td>
                             <!-- <td>{{active.end_date|date:"M d, Y"}}</td>
                             <td>{{active.fil_code_teg}}</td>
                             <td>{{active.text_approval}}</td>
