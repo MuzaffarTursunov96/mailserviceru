@@ -274,24 +274,43 @@
         function BindDays() {
             var month = $("#monthSelect").val();
             var dayDropDown = $("#daySelect");
+            var oldday =dayDropDown.val();
             dayDropDown.empty();
             if (month == 2) {
                 for (var i = 1; i <= 28; i++) {
-                    dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    if (String(i)==String(oldday)){
+                        dayDropDown.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+
+                    }
                 }
                 var year = $("#yearSelect").val();
                 if (parseInt(year) % 4 == 0) {
-                    dayDropDown.append("<option value='29'>29</option>");
+                    if (String(29)==String(oldday)){
+                    dayDropDown.append("<option selected value='29'>29</option>");
+                }else{
+                        dayDropDown.append("<option  value='29'>29</option>");
+
+                    }
                 }
             }
             else if (month == 4 || month == 6 || month == 9 || month == 11) {
                 for (var i = 1; i <= 30; i++) {
-                    dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    if (String(i)==String(oldday)){
+                        dayDropDown.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    }
                 }
             }
             else {
                 for (var i = 1; i <= 31; i++) {
-                    dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    if (String(i)==String(oldday)){
+                        dayDropDown.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    }
                 }
             }
         }
