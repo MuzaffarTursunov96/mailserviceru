@@ -208,8 +208,11 @@
             $("#monthSelect").on("change", function () {
                 BindDays();
             });
-            $("#yearSelect").on("change", function () {
+            $("#yearSelect").on("change", function (elem) {
                 BindDays();
+                for(let i=2022; i<=250; i++){
+                    elem.append("<option value=" + i + ">" + i + "</option>");
+                }
             });
             BindDays();
         });
