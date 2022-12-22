@@ -233,11 +233,10 @@
             });
             $("#yearSelect").on("change", function (elem) {
                 BindDays();
-                console.log('hello');
-                var yearDropDown = $("#yearSelect");
-                yearDropDown.empty();
-                for(var i=2022; i<=2050; i++){
-                    yearDropDown.append("<option value=" + i + ">" + i + "</option>");
+                var monthSelect = $("#monthSelect");
+                monthSelect.empty();
+                for(var i=1; i<=12; i++){
+                    monthSelect.append("<option value=" + i + ">" + i + "</option>");
                 }
             });
             BindDays();
