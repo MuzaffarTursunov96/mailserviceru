@@ -32,7 +32,7 @@ urlpatterns =[
 
 
     # add elements
-    path('add_mail/',views.add_mail,name='add-mail'),
+    path('add_mail/',views.add_mail,name='add_mail'),
     path('add_message/',views.add_message,name='add_message'),
     path('add_customer/',views.add_customer,name='add_customer'),
 
