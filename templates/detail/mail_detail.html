@@ -234,7 +234,7 @@
             $("#yearSelect").on("change", function (elem) {
                 BindDays();
                 console.log('hello');
-                for(let i=2022; i<=250; i++){
+                for(var i=2022; i<=2050; i++){
                     elem.append("<option value=" + i + ">" + i + "</option>");
                 }
             });
