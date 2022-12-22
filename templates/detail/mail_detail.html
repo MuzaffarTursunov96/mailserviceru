@@ -400,19 +400,39 @@
                 csrfmiddlewaretoken: '{% csrf_token %}'
                 }
             
+
             $.ajax({
-            url: url,
-            type: "put",
-            data: values ,
-            success: function (response) {
-                error.innerHTML=res;
-                error.style='display:block';
-            // You will get response from your PHP page (what you echo or print)
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-            }
-         });
+                url:'https://muzaffar96.pythonanywhere.com/api/token/',
+                type:'POST',
+                headers:{
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{% csrf_token%}',
+                },
+                data:{
+                    "email": "m@mail.ru",
+                    "password": "1"
+                },
+                success: function (response) {
+                    $.ajax({
+                        url: url,
+                        type: "put",
+                        data: values ,
+                        headers:{'Authorization':'Bearer '+ res.access},
+                            success: function (response) {
+                                error.innerHTML=res;
+                                error.style='display:block';
+                            // You will get response from your PHP page (what you echo or print)
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                            }
+            });
+
+                }
+
+            });
+           
         }
 </script>
 {%endblock%}
