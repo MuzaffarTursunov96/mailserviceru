@@ -177,8 +177,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for active in today_active %}
                         <tr>
-                            {% for active in today_active %}
                             <td><input class="form-check-input" type="checkbox"></td>
                             <td>{{active.start_date|date:"M d, Y"}}</td>
                             <td>{{active.end_date|date:"M d, Y"}}</td>
@@ -190,7 +190,8 @@
                             <td><span class="badge badge-danger">Not Active</span></td>
                             {%endif%}
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            {%endfor%}
+                        </tr>
+                        {%endfor%}
                     </tbody>
                 </table>
             </div>
@@ -220,8 +221,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for active in today_used %}
                         <tr>
-                            {% for active in today_used %}
                             <td><input class="form-check-input" type="checkbox"></td>
                             <td>{{active.start_date|date:"M d, Y"}}</td>
                             <td>{{active.end_date|date:"M d, Y"}}</td>
@@ -233,7 +234,8 @@
                             <td><span class="badge badge-danger">Not Active</span></td>
                             {%endif%}
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            {%endfor%}
+                        </tr>
+                        {%endfor%}
                     </tbody>
                 </table>
             </div>
@@ -263,8 +265,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for mail in mails %}
                         <tr>
-                            {% for mail in mails %}
+                            
                             <td><input class="form-check-input" type="checkbox"></td>
                             <!-- {{mail}} -->
                             <td>{{mail.start_date|date:"M d, Y"}}</td>
@@ -277,7 +280,9 @@
                             <td><span class="badge badge-danger">Not Active</span></td>
                             {%endif%}
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> -->
-                            {%endfor%}
+                            
+                        </tr>
+                        {%endfor%}
                     </tbody>
                 </table>
             </div>
