@@ -127,20 +127,20 @@
                 <div class="d-flex flex-row pl-3">
                     <div class="p-2">
                         <h6 class="mb-4">Year</h6>
-                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="yearSelect">
-                            <option selected>2022</option>
+                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="yearSelect2">
+                            <option selected>{{mail.end_date|date:"Y"}}</option>
                         </select>
                     </div>
                     <div class="p-2">
                         <h6 class="mb-4">Month</h6>
-                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="monthSelect">
-                            <option selected>1</option>
+                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="monthSelect2">
+                            <option selected>{{mail.end_date|date:"m"}}</option>
                         </select>
                     </div>
                     <div class="p-2">
                         <h6 class="mb-4">Day</h6>
-                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="daySelect">
-                            <option selected>1</option>
+                        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="daySelect2">
+                            <option selected>{{mail.end_date|date:"d"}}</option>
                         </select></div>
                 </div>
                 <div class="col-sm-12 col-xl-6">
@@ -226,19 +226,30 @@
 <script>
      $(function () {
                 var monthSelect = $("#monthSelect");
+                var monthSelect2 = $("#monthSelect2");
                 var oldmonth =monthSelect.val();
+                var oldmonth2 =monthSelect2.val();
                 monthSelect.empty();
+                monthSelect2.empty();
                 for(var i=1; i<=12; i++){
                     if (String(i)==String(oldmonth)){
                         monthSelect.append("<option selected value=" + i + ">" + i + "</option>");
                     }else{
                         monthSelect.append("<option value=" + i + ">" + i + "</option>");
                     }
+                    if (String(i)==String(oldmonth2)){
+                        monthSelect2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        monthSelect2.append("<option value=" + i + ">" + i + "</option>");
+                    }
                 }
 
                 var yearSelect = $("#yearSelect");
+                var yearSelect2 = $("#yearSelect2");
                 var oldyear =yearSelect.val();
+                var oldyear2 =yearSelect2.val();
                 yearSelect.empty();
+                yearSelect2.empty();
                 for(var i=2022; i<=2050; i++){
                     if (String(i)==String(oldyear)){
                         yearSelect.append("<option selected value=" + i + ">" + i + "</option>");
@@ -246,15 +257,29 @@
                         yearSelect.append("<option  value=" + i + ">" + i + "</option>");
 
                     }
+                    if (String(i)==String(oldyear2)){
+                        yearSelect2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        yearSelect2.append("<option  value=" + i + ">" + i + "</option>");
+
+                    }
                 }
                 var daySelect = $("#daySelect");
+                var daySelect2 = $("#daySelect2");
                 var oldday =daySelect.val();
+                var oldday2 =daySelect2.val();
                 daySelect.empty();
+                daySelect2.empty();
                 for(var i=1; i<=28; i++){
                     if (String(i)==String(oldday)){
                         daySelect.append("<option selected value=" + i + ">" + i + "</option>");
                     }else{
                         daySelect.append("<option value=" + i + ">" + i + "</option>");
+                    }
+                    if (String(i)==String(oldday2)){
+                        daySelect2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        daySelect2.append("<option value=" + i + ">" + i + "</option>");
                     }
                 }
 
@@ -268,14 +293,25 @@
                 BindDays();
                 
             });
+            $("#monthSelect2").on("change", function () {
+                BindDays();
+            });
+            $("#yearSelect2").on("change", function (elem) {
+                BindDays();
+                
+            });
             BindDays();
         });
 
         function BindDays() {
             var month = $("#monthSelect").val();
+            var month2 = $("#monthSelect2").val();
             var dayDropDown = $("#daySelect");
+            var dayDropDown2 = $("#daySelect2");
             var oldday =dayDropDown.val();
+            var oldday2 =dayDropDown2.val();
             dayDropDown.empty();
+            dayDropDown2.empty();
             if (month == 2) {
                 for (var i = 1; i <= 28; i++) {
                     if (String(i)==String(oldday)){
@@ -310,6 +346,43 @@
                         dayDropDown.append("<option selected value=" + i + ">" + i + "</option>");
                     }else{
                         dayDropDown.append("<option value=" + i + ">" + i + "</option>");
+                    }
+                }
+            }
+            if (month2 == 2) {
+                for (var i = 1; i <= 28; i++) {
+                    if (String(i)==String(oldday2)){
+                        dayDropDown2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown2.append("<option value=" + i + ">" + i + "</option>");
+
+                    }
+                }
+                var year2 = $("#yearSelect2").val();
+                if (parseInt(year2) % 4 == 0) {
+                    if (String(29)==String(oldday2)){
+                    dayDropDown2.append("<option selected value='29'>29</option>");
+                }else{
+                        dayDropDown2.append("<option  value='29'>29</option>");
+
+                    }
+                }
+            }
+            else if (month2 == 4 || month2 == 6 || month2 == 9 || month2 == 11) {
+                for (var i = 1; i <= 30; i++) {
+                    if (String(i)==String(oldday2)){
+                        dayDropDown2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown2.append("<option value=" + i + ">" + i + "</option>");
+                    }
+                }
+            }
+            else {
+                for (var i = 1; i <= 31; i++) {
+                    if (String(i)==String(oldday2)){
+                        dayDropDown2.append("<option selected value=" + i + ">" + i + "</option>");
+                    }else{
+                        dayDropDown2.append("<option value=" + i + ">" + i + "</option>");
                     }
                 }
             }
