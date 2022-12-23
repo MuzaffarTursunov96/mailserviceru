@@ -6,7 +6,8 @@ from accounts.models import Customer
 
 
 class MailForm(forms.ModelForm):
-  start_date =forms.DateField(widget=widgets.AdminTimeWidget)
+  start_date =forms.DateField(widget=widgets.AdminDateWidget)
+  end_date =forms.DateField(widget=widgets.AdminDateWidget)
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
