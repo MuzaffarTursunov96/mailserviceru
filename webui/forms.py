@@ -12,6 +12,10 @@ class MailForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
             })
+            if field =='start_date' or field =='end_date':
+               self.fields[field].widget.attrs.update({
+                'class': 'datepicker'
+            })
   class Meta:
     model =Mails
     fields =['start_date','text_approval','fil_code_teg','end_date']

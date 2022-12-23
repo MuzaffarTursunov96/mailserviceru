@@ -105,7 +105,7 @@
                         <div class="mb-3">
                             <label  class="form-label">Start date</label>
                             {{form.start_date}}
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            <div id="emailHelp" class="form-text">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -142,4 +142,11 @@
     
 <!-- Content End -->
 {% endblock %}
+
+{%block utils%}
+
+<script>
+    $(".datepicker").datepicker();
+</script>
+{%endblock%}
 
