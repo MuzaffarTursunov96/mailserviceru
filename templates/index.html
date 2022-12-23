@@ -274,11 +274,12 @@
                             <td>{{mail.fil_code_teg}}</td>
                             <td>{{mail.text_approval}}</td>
                             <td>
-                                <ul>
+                                <!-- <ul>
                                     {%for i in mail.status_count %}
                                     <li>{{i}}</li>
                                     {%endfor%}
-                                </ul>
+                                </ul> -->
+                                {{mail.status_count}}
 
                             </td>
                             {%if mail.used %}
