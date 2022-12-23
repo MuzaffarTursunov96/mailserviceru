@@ -268,14 +268,26 @@ def mail_detail(request,pk):
 
 # list
 def mail_list(request):
-  return render(request,'list/mail_list.html')
+  mails =Mails.objects.all()
+  context ={
+    'mails':mails
+  }
+  return render(request,'list/mail_list.html',context)
 
 def customer_list(request):
-  return render(request,'list/customer_list.html')
+  customers =Customer.objects.all()
+  context ={
+    'customers':customers
+  }
+  return render(request,'list/customer_list.html',customers)
 
 
 def message_list(request):
-  return render(request,'list/message_list.html')
+  messages =Messages.objects.all()
+  context ={
+    'messages':messages
+  }
+  return render(request,'list/message_list.html',context)
 
 
 def customer_delete(request,pk):
