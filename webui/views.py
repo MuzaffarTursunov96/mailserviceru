@@ -167,6 +167,14 @@ def typography(requests):
 
 
 def add_mail(request):
+  if request.method =='POST':
+    data =request.POST
+    form =MailForm(data=data)
+    if form.is_valid():
+      form.save()
+      return redirect('index')
+    else:
+      messages.error(request, form.errors)
   form =MailForm()
   context ={
     'form':form
@@ -174,6 +182,14 @@ def add_mail(request):
   return render(request,'elements/add_mail.html',context)
 
 def add_message(request):
+  if request.method =='POST':
+    data =request.POST
+    form =MessageForm(data=data)
+    if form.is_valid():
+      form.save()
+      return redirect('index')
+    else:
+      messages.error(request,form.errors)
   form =MessageForm()
   context ={
     'form':form
@@ -181,6 +197,14 @@ def add_message(request):
   return render(request,'elements/add_message.html',context)
 
 def add_customer(request):
+  if request.method =='POST':
+    data =request.POST
+    form =CustomerForm(data=data)
+    if form.is_valid():
+      form.save()
+      return redirect('index')
+    else:
+      messages.error(request,form.errors)
   form =CustomerForm()
   context ={
     'form':form
