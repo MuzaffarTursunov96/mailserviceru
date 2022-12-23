@@ -176,7 +176,7 @@
                             <td><button type="button" class="btn btn-info m-2 btn-sm">To be sent</button></td>
                             {%endif%}
                             {%endcomment%}
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a><a href=""><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
                             
                         </tr>
                         {%endfor%}

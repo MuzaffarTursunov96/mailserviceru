@@ -240,6 +240,26 @@ def customer_list(request):
 
 def message_list(request):
   return render(request,'list/message_list.html')
+
+
+def customer_delete(request,pk):
+  customer =  get_object_or_404(Customer,pk=pk)
+  customer.delete()
+  return redirect('customer_list')
+
+def message_delete(request,pk):
+  message =  get_object_or_404(Messages,pk=pk)
+  message.delete()
+  return redirect('message_list')
+
+
+def mail_delete(request,pk):
+  mail =  get_object_or_404(Mails,pk=pk)
+  mail.delete()
+  return redirect('mail_list')
+
+
+
   
 
 

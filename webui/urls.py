@@ -36,16 +36,19 @@ urlpatterns =[
     path('add_mail/',views.add_mail,name='add_mail'),
     path('mail-list/',views.mail_list,name='mail_list'),
     path('mail_detail/<int:pk>',views.mail_detail,name='mail_detail'),
+    path('mail_delete/<int:pk>',views.mail_delete,name='mail_delete'),
 
     # message
     path('add_message/',views.add_message,name='add_message'),
     path('message-list/',views.message_list,name='message_list'),
     path('message-detail/<int:pk>',views.message_detail,name='message_detail'),
+    path('message_delete/<int:pk>',views.message_delete,name='message_delete'),
 
     # customer
     path('add_customer/',views.add_customer,name='add_customer'),
     path('customer-list/',views.customer_list,name='customer_list'),
     path('customer-detail/<int:pk>',views.customer_detail,name='customer_detail'),
+    path('customer_delete/<int:pk>',views.customer_delete,name='customer_delete'),
 
 ]
 
