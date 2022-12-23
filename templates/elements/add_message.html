@@ -102,29 +102,36 @@
             <div class="row g-4">
                 <div class="col-sm-12 col-xl-6">
                     <div class="bg-secondary rounded h-100 p-4">
-                        <h6 class="mb-4">Messsage Add</h6>
-                        <form>
+                        <h6 class="mb-4">Messsage Detail</h6>
+                        <form method="POST">
+                            {%csrf_token%}
                             <div class="mb-3">
                                 <label for="created_date" class="form-label">Created date to send</label>
-                                <input type="text" class="form-control" id="created_date" name="created_date"
-                                    aria-describedby="emailHelp" required>
+                                {{form.created_date_to_send}}
                                 <div id="emailHelp" class="form-text">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
-                                <input type="text" class="form-control" id="status" name="status" required>
+                                {{form.status}}
                             </div>
                             <div class="mb-3">
                                 <label for="mail" class="form-label">Mail</label>
-                                <input type="text" class="form-control" id="mail" name="mail" required>
+                                {{form.mail}}
                             </div>
                             <div class="mb-3">
                                 <label for="customer" class="form-label">Customer</label>
-                                <input type="text" class="form-control" id="customer" name="customer" required>
+                                {{form.customer}}
                             </div>
+                            {% if messages %}
+                         <ul class="messages">
+                              {% for message in messages %}
+                               <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                              {% endfor %}
+                        </ul>
+                        {% endif %}
                             
-                            <button type="submit" class="btn btn-primary">Create Message</button>
+                            <button type="submit" class="btn btn-primary">Update Message</button>
                         </form>
                     </div>
                 </div>

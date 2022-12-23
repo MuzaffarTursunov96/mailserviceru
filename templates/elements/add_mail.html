@@ -94,47 +94,52 @@
     </nav>
     <!-- Navbar End -->
 
-
-    <!-- Blank Start -->
+<form  method="Post">
+    {%csrf_token%}
     <div class="container-fluid pt-4 px-4">
-        <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-          <div class="container-fluid pt-4 px-4">
-            <div class="row g-4">
-                <div class="col-sm-12 col-xl-6">
-                    <div class="bg-secondary rounded h-100 p-4">
-                        <h6 class="mb-4">Mail Add</h6>
-                        <form>
-                            <div class="mb-3">
-                                <label for="start_date" class="form-label">Start Date</label>
-                                <input type="text" class="form-control" id="start_date" name="start_date"
-                                    aria-describedby="emailHelp" required>
-                                <div id="emailHelp" class="form-text">
-                                </div>
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Mail</h6>
+                    
+                        <div class="mb-3">
+                            <label  class="form-label">Start date</label>
+                            {{form.start_date}}
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                             </div>
-                            <div class="mb-3">
-                                <label for="end_date" class="form-label">End date</label>
-                                <input type="text" class="form-control" id="end_date" name="end_date" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="text_approval" class="form-label">Text Approval</label>
-                                <input type="text" class="form-control" id="text_approval" name="text_approval" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fil_code_text" class="form-label">Filter code and text</label>
-                                <input type="text" class="form-control" id="fil_code_text" name="fil_code_text" required>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary">Create Customer</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">End date</label>
+                            {{form.end_date}}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fitering code and text</label>
+                            {{form.fil_code_teg}}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Text approval</label>
+                            {{form.text_approval}}
+                        </div>
+                        {% if messages %}
+                         <ul class="messages">
+                              {% for message in messages %}
+                               <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                              {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    
                 </div>
             </div>
-          </div>
         </div>
     </div>
-    <!-- Blank End -->
+</form>
+    
+      
+   
 
 
     
 <!-- Content End -->
 {% endblock %}
+

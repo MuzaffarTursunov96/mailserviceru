@@ -167,13 +167,25 @@ def typography(requests):
 
 
 def add_mail(request):
-  return render(request,'elements/add_mail.html')
+  form =MailForm()
+  context ={
+    'form':form
+  }
+  return render(request,'elements/add_mail.html',context)
 
 def add_message(request):
-  return render(request,'elements/add_message.html')
+  form =MessageForm()
+  context ={
+    'form':form
+  }
+  return render(request,'elements/add_message.html',context)
 
 def add_customer(request):
-  return render(request,'elements/add_customer.html')
+  form =CustomerForm()
+  context ={
+    'form':form
+  }
+  return render(request,'elements/add_customer.html',context)
 
 
 
