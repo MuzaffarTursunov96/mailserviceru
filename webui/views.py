@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from main.models import Mails,Messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect,get_object_or_404
 from django.contrib.auth import authenticate,login,logout
 import uuid
 from django.contrib.auth.decorators import login_required
@@ -14,6 +14,7 @@ from django.contrib.auth.tokens import default_token_generator
 from .utils import send_verification_email
 from accounts.models import Customer
 from .forms import MailForm
+from django.contrib import messages
 
 
 
@@ -200,11 +201,16 @@ def message_detail(request,pk):
 
 
 def mail_detail(request,pk):
-  if Mails.objects.filter(id=pk).exists():
-    mail =Mails.objects.get(id=pk)
-    form = MailForm(instance=mail)
-  else:
-     return render(request,'404.html')
+  mail =  get_object_or_404()
+  if request.method =='POST':
+    data =request.POST
+    form =MailForm(data=data,instance =mail)
+    if form.is_valid():
+      form.save()
+    else:
+      messages.error(request, form.errors)
+  
+  form = MailForm(instance=mail)
   context ={
     'mail':mail,
     'form':form

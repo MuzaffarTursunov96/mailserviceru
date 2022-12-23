@@ -94,13 +94,13 @@
     </nav>
     <!-- Navbar End -->
 
-<form action="">
+<form action="/" method="Post">
     {%csrf_token%}
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary rounded h-100 p-4">
-                    <h6 class="mb-4">Basic Form</h6>
+                    <h6 class="mb-4">Mail</h6>
                     <form>
                         <div class="mb-3">
                             <label  class="form-label">Start date</label>
@@ -120,7 +120,13 @@
                             <label class="form-label">Text approval</label>
                             {{form.text_approval}}
                         </div>
-                        
+                        {% if messages %}
+                         <ul class="messages">
+                              {% for message in messages %}
+                               <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                              {% endfor %}
+                        </ul>
+                        {% endif %}
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </form>
                 </div>
