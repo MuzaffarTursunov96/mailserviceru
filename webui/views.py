@@ -201,7 +201,7 @@ def message_detail(request,pk):
 
 
 def mail_detail(request,pk):
-  mail =  get_object_or_404()
+  mail =  get_object_or_404(Mails,pk=pk)
   if request.method =='POST':
     data =request.POST
     form =MailForm(data=data,instance =mail)
