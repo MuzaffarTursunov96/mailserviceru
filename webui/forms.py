@@ -2,12 +2,13 @@ from django import forms
 from main.models import Mails,Messages
 from django.contrib.admin import widgets
 from accounts.models import Customer
+from django.forms.widgets import SelectDateWidget
 
 
 
 class MailForm(forms.ModelForm):
-  start_date =forms.DateField(widget=widgets.AdminDateWidget)
-  end_date =forms.DateField(widget=widgets.AdminDateWidget)
+  start_date =forms.DateField(widget=SelectDateWidget)
+  end_date =forms.DateField(widget=SelectDateWidget)
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
