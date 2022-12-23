@@ -104,6 +104,7 @@
                     <div class="bg-secondary rounded h-100 p-4">
                         <h6 class="mb-4">Customer Add</h6>
                         <form method="POST">
+                            {%csrf_token%}
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Phone munber</label>
                                 {{form.phone_number}}
