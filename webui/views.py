@@ -15,7 +15,7 @@ from .utils import send_verification_email
 from accounts.models import Customer
 from .forms import MailForm,MessageForm,CustomerForm
 from django.contrib import messages
-
+from django.db.models import Count
 
 
 
@@ -25,7 +25,7 @@ def index(request):
   today_start=ddate.date.today() + ddate.timedelta(days=1)
   todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
   todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
-  mails = Mails.objects.all()
+  mails = Mails.objects.all().annotate(status_count=Count('status'))
   total_sent_mails =Mails.objects.filter(used=True).count()
   all_mail =mails.count()
   count_today =todays_mails_active.count() + todays_mails_used.count()

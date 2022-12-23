@@ -261,6 +261,7 @@
                             <th scope="col">Filtering tags</th>
                             <th scope="col">Text send</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Messages Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -272,6 +273,14 @@
                             <td>{{mail.end_date|date:"M d, Y"}}</td>
                             <td>{{mail.fil_code_teg}}</td>
                             <td>{{mail.text_approval}}</td>
+                            <td>
+                                <ul>
+                                    {%for i in mail.status_count %}
+                                    <li>{{i}}</li>
+                                    {%endfor%}
+                                </ul>
+
+                            </td>
                             {%if mail.used %}
                             <td> <button type="button" class="btn btn-success m-2 btn-sm">Active</button></td>
                             {%else%}
