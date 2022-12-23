@@ -13,7 +13,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from .utils import send_verification_email
 from accounts.models import Customer
-from .forms import MailForm
+from .forms import MailForm,MessageForm,CustomerForm
 from django.contrib import messages
 
 
@@ -180,22 +180,34 @@ def add_customer(request):
 # Details
 
 def customer_detail(request,pk):
-  if Customer.objects.filter(id=pk).exists():
-    customer =Customer.objects.get(id=pk)
-  else:
-     return render(request,'404.html')
+  customer =  get_object_or_404(Customer,pk=pk)
+  if request.method =='POST':
+    data =request.POST
+    form =CustomerForm(data=data,instance =customer)
+    if form.is_valid():
+      form.save()
+    else:
+      messages.error(request, form.errors)
+  form =CustomerForm(instance =customer)
   context ={
     'customer':customer
   }
   return render(request,'detail/customer_detail.html',context)
   
 def message_detail(request,pk):
-  if Messages.objects.filter(id=pk).exists():
-    message =Messages.objects.get(id=pk)
-  else:
-     return render(request,'404.html')
+  message =  get_object_or_404(Messages,pk=pk)
+  if request.method =='POST':
+    data =request.POST
+    form =MessageForm(data=data,instance =message)
+    if form.is_valid():
+      form.save()
+    else:
+      messages.error(request, form.errors)
+  form =MessageForm(instance =message)
   context ={
-    'message':message
+    'message':message,
+    'form':form
+
   }
   return render(request,'detail/message_detail.html',context)
 
