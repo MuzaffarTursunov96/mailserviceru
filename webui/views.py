@@ -25,7 +25,7 @@ def index(request):
   today_start=ddate.date.today() + ddate.timedelta(days=1)
   todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
   todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
-  mails = Mails.objects.all().annotate(status_count=Count('status'))
+  mails = Mails.objects.all().annotate(status_count=Count('messages_m__status'))
   total_sent_mails =Mails.objects.filter(used=True).count()
   all_mail =mails.count()
   count_today =todays_mails_active.count() + todays_mails_used.count()
