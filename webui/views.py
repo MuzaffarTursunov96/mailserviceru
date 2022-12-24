@@ -325,9 +325,9 @@ def mail_sent(request,pk):
   return JsonResponse({'msg':msg,'status':status})
 
 def message_sent(request,pk):
-  return JsonResponse({'msg':'sd','status':"salom"})
+  # return JsonResponse({'msg':'sd','status':"salom"})
   if Messages.objects.filter(id=pk).exists():
-    messages2 = Messages.objects.get(pk=pk)
+    messages2 = Messages.objects.get(id=int(pk))
     if send_message_single(messages2):
       messages2.status='message_sent'
       messages2.save()
