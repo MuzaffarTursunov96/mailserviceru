@@ -20,22 +20,33 @@ from django.http import JsonResponse
 from decouple import config
 import requests 
 import time
-
+from django.db.models import Q
 
 
 @login_required(login_url='login')
 def index(request):
-  yesterday = ddate.date.today() - ddate.timedelta(days=1)
-  today_start=ddate.date.today() + ddate.timedelta(days=1)
-  todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
-  todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
-  mails = Mails.objects.all().annotate(status_count=Count('messages_m__id'))
-  total_sent_mails =Mails.objects.filter(used=True).count()
-  all_mail =mails.count()
-  count_today =todays_mails_active.count() + todays_mails_used.count()
-  # mailserializer = MailSerializer(mails,many=True)
-  customers =Customer.objects.all()
-  messages =Messages.objects.all()
+  if 'search' in request.GET:
+    search =request.GET.get('search')
+    todays_mails_active=None
+    todays_mails_used=None
+    count_today=0
+    all_mail =0
+    total_sent_mails=0
+    mails = Mails.objects.filter(Q(text_approval__icontains=search) | Q(fil_code_teg__icontains=search))
+    customers =Customer.objects.filter(Q(phone_code__icontains=search)| Q(teg__icontains=search))
+    messages =None
+  else:
+    yesterday = ddate.date.today() - ddate.timedelta(days=1)
+    today_start=ddate.date.today() + ddate.timedelta(days=1)
+    todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
+    todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
+    mails = Mails.objects.all().annotate(status_count=Count('messages_m__id'))
+    total_sent_mails =Mails.objects.filter(used=True).count()
+    all_mail =mails.count()
+    count_today =todays_mails_active.count() + todays_mails_used.count()
+    # mailserializer = MailSerializer(mails,many=True)
+    customers =Customer.objects.all()
+    messages =Messages.objects.all()
 
   context ={
       'today_active':todays_mails_active,
