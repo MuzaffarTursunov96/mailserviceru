@@ -154,7 +154,7 @@
                             <th scope="col">Mail</th>
                             <th scope="col">Customer tag</th>
                             <!-- <th scope="col">Text send</th> -->
-                            <!-- <th scope="col">Status</th> -->
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -167,7 +167,7 @@
                             <td>{{message.customer.teg}}</td>
                             {%comment%}
                             <!-- <td>{{message.status}}</td> -->
-                            {%if message.status =='processing' %}
+                            {%if message.status =="processing" %}
                             <td> <button type="button" class="btn btn-success m-2 btn-sm">Processing</button></td>
                             {%endif%}
                             {%if message.status =='message_sent'%}
