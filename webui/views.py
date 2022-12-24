@@ -34,7 +34,7 @@ def index(request):
     total_sent_mails=0
     mails = Mails.objects.filter(Q(text_approval__icontains=search) | Q(fil_code_teg__icontains=search))
     customers =Customer.objects.filter(Q(phone_code__icontains=search)| Q(teg__icontains=search))
-    messages =None
+    messages =Messages.objects.filter(Q(mail__text_approval__icontains=search)| Q(customer__teg__icontains=search))
   else:
     yesterday = ddate.date.today() - ddate.timedelta(days=1)
     today_start=ddate.date.today() + ddate.timedelta(days=1)
@@ -283,14 +283,22 @@ def mail_detail(request,pk):
 
 # list
 def mail_list(request):
-  mails =Mails.objects.all()
+  if 'search' in request.GET:
+    search =request.GET.get('search')
+    mails = Mails.objects.filter(Q(text_approval__icontains=search) | Q(fil_code_teg__icontains=search))
+  else:
+    mails =Mails.objects.all()
   context ={
     'mails':mails
   }
   return render(request,'list/mail_list.html',context)
 
 def customer_list(request):
-  customers =Customer.objects.all()
+  if 'search' in request.GET:
+    search =request.GET.get('search')
+    customers =Customer.objects.filter(Q(phone_code__icontains=search)| Q(teg__icontains=search))
+  else:
+    customers =Customer.objects.all()
   context ={
     'customers':customers
   }
@@ -298,7 +306,11 @@ def customer_list(request):
 
 
 def message_list(request):
-  messages =Messages.objects.all()
+  if 'search' in request.GET:
+    search =request.GET.get('search')
+    messages =Messages.objects.filter(Q(mail__text_approval__icontains=search)| Q(customer__teg__icontains=search))
+  else:
+    messages =Messages.objects.all()
   context ={
     'messages':messages
   }
