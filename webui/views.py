@@ -18,7 +18,7 @@ from django.contrib import messages
 from django.db.models import Count
 from django.http import JsonResponse
 from decouple import config
-import requests as rq
+import requests 
 import time
 
 
@@ -344,8 +344,8 @@ def message_sent(request,pk):
         'Content-Type': 'application/json'
     }
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
-    return JsonResponse({'msg':data_object,'status':api_link})
-    output = rq.post(api_link, headers=headers,json=data_object)
+    output = requests.post(api_link, headers=headers,json=data_object)
+    return JsonResponse({'msg':data_object,'status':output})
     time.sleep(5)
 
     if output.status_code == 200:
