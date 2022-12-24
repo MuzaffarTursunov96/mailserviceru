@@ -56,7 +56,7 @@ class MailForm(forms.ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-  created_date_to_send =forms.DateField(widget=SelectDateWidget)
+  created_date_to_send =forms.DateField(widget=widgets.SelectDateWidget)
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
