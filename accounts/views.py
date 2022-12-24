@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-from .models import Customer
+from .models import Customer,User,UserProfile
 from .serializers import CustomerSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -35,3 +35,7 @@ class DeleteCustomers(generics.DestroyAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
     lookup_url_kwarg='pk'
+
+def my_profile(request,pk):
+    user =U
+    return render(request,'accounts/my_profile.html')

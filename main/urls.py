@@ -22,5 +22,6 @@ urlpatterns =[
   path('message-delete/<pk>',views.DeleteMessage.as_view(),name='delete-message'),
   path('message-update/<pk>',views.UpdateMessage.as_view(),name='update-message'),
   path('message-detail/<pk>',views.DetailMessage.as_view(),name='detail-message'),
+  
 
 ]

@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
   </a>
   {% if 'add_mail' in request.path or 'add_customer' in request.path or 'add_message' in request.path %}
-  
+
   {% else %}
   <form class="d-none d-md-flex ms-4">
       <input class="form-control bg-dark border-0" type="search" name="search" placeholder="Search">
@@ -84,7 +84,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="#" class="dropdown-item">My Profile</a>
-              <a href="#" class="dropdown-item">Settings</a>
+              <!-- <a href="#" class="dropdown-item">Settings</a> -->
               <a href="{% url 'logout' %}" class="dropdown-item">Log Out</a>
           </div>
       </div>

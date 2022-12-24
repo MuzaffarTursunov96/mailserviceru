@@ -97,3 +97,6 @@ def MailIsActive(request):
     if mails.count() > 0:
         return Response({'data':mailserializer.data})
     return Response({'data':'No active mails.'})
+
+
+
