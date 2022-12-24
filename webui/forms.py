@@ -12,8 +12,8 @@ timezones = pytz.all_timezones
 class MailForm(forms.ModelForm):
   start_date =forms.DateTimeField(
         initial=datetime.now().strftime("%Y-%m-%d %H:%M"),
-        widget=forms.widgets.DateInput(
-            attrs={'type': 'date'})
+        widget=forms.widgets.DateTimeInput(
+            attrs={'type': 'datetime'})
     )
   end_date =forms.DateTimeField(
         initial=datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -62,7 +62,11 @@ class MailForm(forms.ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-  created_date_to_send =forms.DateField(widget=widgets.SelectDateWidget)
+  created_date_to_send =forms.DateTimeField(
+        initial=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        widget=forms.widgets.DateTimeInput(
+            attrs={'type': 'datetime'})
+    )
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
