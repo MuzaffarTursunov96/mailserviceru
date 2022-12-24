@@ -189,7 +189,7 @@
 {% block utils %}
 <script>
    function sent_message(msg_id){
-    var url ="{% rul '' %}"+msg_id
+    var url ="{% url '' %}"+msg_id
     $.ajax({
 	url: url,         /* Куда пойдет запрос */
 	method: 'get',            /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
