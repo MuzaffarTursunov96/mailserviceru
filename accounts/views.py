@@ -42,7 +42,7 @@ def my_profile(request,pk):
     if request.method =="POST":
         if UserProfile.objects.filter(user=user).exists():
             profile =UserProfile.objects.get(user=user)
-            form =ProfileForm(request.POST,request.FILES)
+            form =ProfileForm(request.POST,request.FILES,instance=profile)
             if form.is_valid():
                 form.save()
             else:
