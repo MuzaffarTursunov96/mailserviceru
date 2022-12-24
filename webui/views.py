@@ -342,7 +342,7 @@ def message_sent(request,pk):
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
     }
-    return JsonResponse({'msg':'sd','status':"salom"})
+    return JsonResponse({'msg':'sd','status':headers})
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
     output = rq.post(api_link, headers=headers,json=data_object)
 
