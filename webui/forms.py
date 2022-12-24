@@ -9,6 +9,16 @@ from django.forms.widgets import SelectDateWidget
 class MailForm(forms.ModelForm):
   start_date =forms.DateField(widget=SelectDateWidget)
   end_date =forms.DateField(widget=SelectDateWidget)
+
+  def clean(self):
+    cleaned_data = super(MailForm, self).clean()
+    end_date = cleaned_data['end_date']
+    start_date = cleaned_data['start_date']
+    # do your cleaning here
+    if start_date > end_date:
+      raise forms.ValidationError("Start date should be before end date.")
+    return cleaned_data
+
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
