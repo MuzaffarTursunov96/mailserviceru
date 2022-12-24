@@ -172,7 +172,7 @@ def add_mail(request):
     form =MailForm(data=data)
     if form.is_valid():
       form.save()
-      return redirect('index')
+      return redirect('mail_list')
     else:
       messages.error(request, form.errors)
   form =MailForm()
@@ -187,7 +187,7 @@ def add_message(request):
     form =MessageForm(data=data)
     if form.is_valid():
       form.save()
-      return redirect('index')
+      return redirect('message_list')
     else:
       messages.error(request,form.errors)
   form =MessageForm()
@@ -202,7 +202,7 @@ def add_customer(request):
     form =CustomerForm(data=data)
     if form.is_valid():
       form.save()
-      return redirect('index')
+      return redirect('customer_list')
     else:
       messages.error(request,form.errors)
   form =CustomerForm()

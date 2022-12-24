@@ -261,7 +261,7 @@
                             <th scope="col">Filtering tags</th>
                             <th scope="col">Text send</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Messages Status</th>
+                            <th scope="col">Messages Statuses</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -273,16 +273,16 @@
                             <td>{{mail.end_date|date:"M d, Y"}}</td>
                             <td>{{mail.fil_code_teg}}</td>
                             <td>{{mail.text_approval}}</td>
-                            <td>
-                                
-                                {{mail.status_count}}
-
-                            </td>
                             {%if mail.used %}
                             <td> <button type="button" class="btn btn-success m-2 btn-sm">Active</button></td>
                             {%else%}
                             <td><button type="button" class="btn btn-info m-2 btn-sm">Processing</button></td>
                             {%endif%}
+                            <td>
+                                
+                                {{mail.status_count}}
+
+                            </td>
                             <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' mail.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' mail.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
                             
                         </tr>
