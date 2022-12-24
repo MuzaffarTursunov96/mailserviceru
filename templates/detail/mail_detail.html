@@ -169,7 +169,7 @@
                             <td>
                                 <a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a>
                                 <a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm" onclick="return confirm('Are you sure delete this Message?')"><i class="fa fa-trash"></i> Delete</button></a>
-                                <button type="button" class="btn btn-info m-2 btn-sm" onclick="sent_message('{{message.id}}')" id="message-{{message.id}}"data-url="{% url 'message_sent' message.id %}"><i class="fa fa-mail-forward"></i> Send</button>
+                                <button type="button" class="btn btn-info m-2 btn-sm" onclick="sent_message('{{message.id}}','{{message.customer.phone_number}}','{{message.mail.text_approval}}')" id="message-{{message.id}}"data-url="{% url 'message_sent' message.id %}"><i class="fa fa-mail-forward"></i> Send</button>
                             </td> 
                             
                         </tr>
@@ -188,19 +188,36 @@
 {% endblock %}
 {% block utils %}
 <script>
-   function sent_message(msg_id){
+   function sent_message(msg_id,b,c){
     
-    var url = $("#message-"+msg_id).data('url');
+    // var url = $("#message-"+msg_id).data('url');
+    var url1="https://probe.fbrq.cloud/v1/send/"+msg_id
+    console.log(msg_id,b,c);
     // alert(url);
-    $.ajax({
-	url: url,         /* Куда пойдет запрос */
-	method: 'get',            /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
-	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-		console.log(data);
-        alert(data);      
-              /* В переменной data содержится ответ от index.php. */
-	}
-});
+    // $.ajax({
+	// url: url,         /* Куда пойдет запрос */
+	// method: 'post',
+    // headers:{
+    //     'accept': 'application/json',
+    //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleH…lciJ9.qJGWmvW27mLt-zAgQSV3C6adgxzZ3Ac9dCSlVvywdUc',
+    //     'Content-Type': 'application/json'
+    // },
+    // data:{
+    //     "id": messages2.customer.id,
+    //     "phone": messages2.customer.phone_number,
+    //     "text": messages2.mail.text_approval
+    // } ,   /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
+	// success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+	// 	console.log(data);
+    //     alert(data);      
+    //           /* В переменной data содержится ответ от index.php. */
+	// },
+    // error: function(data){
+    //     console.log(data);
+    //     alert(data);
+    // }
+    
+// });
     
    }
     
