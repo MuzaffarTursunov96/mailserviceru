@@ -15,9 +15,9 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{% url 'index' %}" class="nav-item nav-link active "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="{% url 'index' %}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
-                <a  class="nav-link dropdown-toggle {%if request.path =='/mail-list/' or request.path =='/customer-list/' or request.path =='/message-list/' %}active {%endif%}" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements List</a>
+                <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements List</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{% url 'mail_list' %}" class="dropdown-item">Mails</a>
                     <a href="{% url 'customer_list' %}" class="dropdown-item">Customers</a>
@@ -27,9 +27,9 @@
                     <a href="{% url 'elements' %}" class="dropdown-item">Other Elements</a> -->
                 </div>
             </div>
-            <a href="{% url 'add_mail' %}" class="nav-item nav-link {%if request.path =='/add_mail/' %}active{%endif%}" ><i class="fa fa-id-card" aria-hidden="true"></i>Add Mail</a>
-            <a href="{% url 'add_customer' %}" class="nav-item nav-link {%if request.path =='/add_customer/' %}active{%endif%}"><i class="fa fa-user me-2"></i>Add Customer</a>
-            <a href="{% url 'add_message' %}" class="nav-item nav-link {%if request.path =='/add_message/' %}active{%endif%}"><i class="fa fa-paper-plane" aria-hidden="true"></i>Add Message</a>
+            <a href="{% url 'add_mail' %}" class="nav-item nav-link"><i class="fa fa-id-card" aria-hidden="true"></i>Add Mail</a>
+            <a href="{% url 'add_customer' %}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Add Customer</a>
+            <a href="{% url 'add_message' %}" class="nav-item nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i>Add Message</a>
             <a href="{% url 'forms' %}" class="nav-item nav-link"><i class="fa-solid fa-paper-plane me-2"></i>Forms</a>
             <!-- <a href="{% url 'tables' %}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
             <a href="{% url 'charts' %}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
