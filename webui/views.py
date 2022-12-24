@@ -336,13 +336,13 @@ def message_sent(request,pk):
         "phone": messages2.customer.phone_number,
         "text": messages2.mail.text_approval
     }
-    return JsonResponse({'msg':'sd','status':"salom"})
     token =config("TOKEN")
     headers={
         'accept': 'application/json',
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
     }
+    return JsonResponse({'msg':'sd','status':"salom"})
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
     output = rq.post(api_link, headers=headers,json=data_object)
 
