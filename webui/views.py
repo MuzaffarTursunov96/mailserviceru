@@ -11,11 +11,12 @@ from main.serializers import MailSerializer
 from accounts.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-from .utils import send_verification_email
+from .utils import send_verification_email,send_message,send_message_single
 from accounts.models import Customer
 from .forms import MailForm,MessageForm,CustomerForm
 from django.contrib import messages
 from django.db.models import Count
+from django.http import JsonResponse
 
 
 
@@ -25,7 +26,7 @@ def index(request):
   today_start=ddate.date.today() + ddate.timedelta(days=1)
   todays_mails_active = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=False)
   todays_mails_used = Mails.objects.filter(start_date__gt=yesterday,end_date__lt=today_start,used=True)
-  mails = Mails.objects.all().annotate(status_count=Count('messages_m__status'))
+  mails = Mails.objects.all().annotate(status_count=Count('messages_m__id'))
   total_sent_mails =Mails.objects.filter(used=True).count()
   all_mail =mails.count()
   count_today =todays_mails_active.count() + todays_mails_used.count()
@@ -305,6 +306,40 @@ def mail_delete(request,pk):
   mail =  get_object_or_404(Mails,pk=pk)
   mail.delete()
   return redirect('mail_list')
+
+def mail_sent(request,pk):
+  if Mails.objects.filter(id=pk).exists():
+    messages2 = Mails.objects.get(pk=pk)
+    if send_message(messages2):
+      messages2.used =True
+      messages2.save()
+      msg ='Mail sent Succesfully!'
+      status =200
+    else:
+      msg ='Something went wrong! Try after one hours.'
+      status =400
+  else:
+    msg ='Mail does not exist.'
+    status =404
+
+  return JsonResponse({'msg':msg,'status':status})
+
+def message_sent(request,pk):
+  if Messages.objects.filter(id=pk).exists():
+    messages2 = Messages.objects.get(pk=pk)
+    if send_message_single(messages2):
+      messages2.status='message_sent'
+      messages2.save()
+      msg ='Message sent Succesfully!'
+      status =200
+    else:
+      msg ='Something went wrong! Try after one hours.'
+      status =400
+  else:
+    msg ='Message does not exist.'
+    status =404
+
+  return JsonResponse({'msg':msg,'status':status})
 
 
 

@@ -165,14 +165,12 @@
                             <td>{{message.created_date_to_send|date:"M d, Y"}}</td>
                             <td>{{message.mail}}</td>
                             <td>{{message.customer.teg}}</td>
-                            <!-- <td>{{message.status}}</td> -->
-                            
-                            <td>{{message.status}}</td>
-
-                            
-                            
-
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
+                            <td> <button type="button" class="btn btn-info rounded-pill m-2 btn-sm">{{message.status}}</button></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a>
+                                <a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a>
+                                <button type="button" class="btn btn-danger m-2 btn-sm" onclick="sent_message('{{message.id}}')"><i class="fa fa-mail-forward"></i> Send</button>
+                            </td> 
                             
                         </tr>
                         {%endfor%}
@@ -188,4 +186,11 @@
     
 <!-- Content End -->
 {% endblock %}
-
+{% block utils %}
+<script>
+   function sent_message(msg_id){
+    alert(msg_id);
+   }
+    
+</script>
+{% endblock %}

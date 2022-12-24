@@ -49,6 +49,9 @@ urlpatterns =[
     path('customer-list/',views.customer_list,name='customer_list'),
     path('customer-detail/<int:pk>',views.customer_detail,name='customer_detail'),
     path('customer_delete/<int:pk>',views.customer_delete,name='customer_delete'),
+    
+    path('mail-messages-sent/<int:pk>',views.mail_sent,name='mail_sent'),
+    path('messages-sent/<int:pk>',views.message_sent,name='message_sent'),
 
 ]
 
