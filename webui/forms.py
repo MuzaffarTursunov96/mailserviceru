@@ -2,7 +2,7 @@ from django import forms
 from main.models import Mails,Messages
 from django.contrib.admin import widgets
 from accounts.models import Customer
-from django.forms.widgets import SelectDateWidget
+from django.forms import widgets
 from datetime import datetime
 from main.utils import split_filter_text
 import pytz
@@ -10,8 +10,9 @@ timezones = pytz.all_timezones
 
 
 class MailForm(forms.ModelForm):
-  start_date =forms.DateField(widget=SelectDateWidget)
-  end_date =forms.DateField(widget=SelectDateWidget)
+  start_date =forms.DateField(widget=widgets.SelectDateWidget)
+  end_date =forms.DateField(widget=widgets.SelectDateWidget)
+  date_time =forms.DateField(widget=widgets.SplitDateTimeWidget)
 
   def clean(self):
     cleaned_data = super(MailForm, self).clean()
