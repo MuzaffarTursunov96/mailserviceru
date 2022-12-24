@@ -52,7 +52,7 @@ class MailForm(forms.ModelForm):
             # })
   class Meta:
     model =Mails
-    fields =['start_date','text_approval','fil_code_teg','end_date']
+    fields =['start_date','text_approval','fil_code_teg','end_date','date_time']
 
 
 class MessageForm(forms.ModelForm):
