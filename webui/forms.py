@@ -67,6 +67,8 @@ class MessageForm(forms.ModelForm):
         widget=forms.widgets.DateTimeInput(
             attrs={'type': 'datetime'})
     )
+  CHOICES=(('processing','Processing'),('message_sent','Sent messages'),('to_be_sent','Messages to be sent'))
+  status = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
