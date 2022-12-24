@@ -344,7 +344,7 @@ def message_sent(request,pk):
         'Content-Type': 'application/json'
     }
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
-    return JsonResponse({'msg':headers,'status':api_link})
+    return JsonResponse({'msg':data_object,'status':api_link})
     output = rq.post(api_link, headers=headers,json=data_object)
     time.sleep(5)
 
