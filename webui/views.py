@@ -17,6 +17,8 @@ from .forms import MailForm,MessageForm,CustomerForm
 from django.contrib import messages
 from django.db.models import Count
 from django.http import JsonResponse
+from decouple import config
+import requests as rq
 
 
 
@@ -328,8 +330,24 @@ def message_sent(request,pk):
   # return JsonResponse({'msg':'sd','status':"salom"})
   if Messages.objects.filter(id=pk).exists():
     messages2 = Messages.objects.get(id=int(pk))
-    if send_message_single(messages2):
-      messages2.status='message_sent'
+
+    all_aproved =True
+    data_object = {
+        "id": messages2.customer.id,
+        "phone": messages2.customer.phone_number,
+        "text": messages2.mail.text_approval
+    }
+    token =config("TOKEN")
+    headers={
+        'accept': 'application/json',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+    api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
+    output = rq.post(api_link, headers=headers,json=data_object)
+
+    if output.status_code == 200:
+      messages2.status ='message_sent'
       messages2.save()
       msg ='Message sent Succesfully!'
       status =200
