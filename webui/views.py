@@ -279,7 +279,7 @@ def customer_list(request):
   context ={
     'customers':customers
   }
-  return render(request,'list/customer_list.html',customers)
+  return render(request,'list/customer_list.html',context)
 
 
 def message_list(request):
