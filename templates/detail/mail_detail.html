@@ -191,16 +191,16 @@
    function sent_message(msg_id){
     
     var url = $("#message-"+msg_id).data('url');
-    alert(url);
-//     $.ajax({
-// 	url: url,         /* Куда пойдет запрос */
-// 	method: 'get',            /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
-// 	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-// 		console.log(data);
-//         alert(data);      
-//               /* В переменной data содержится ответ от index.php. */
-// 	}
-// });
+    // alert(url);
+    $.ajax({
+	url: url,         /* Куда пойдет запрос */
+	method: 'get',            /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
+	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+		console.log(data);
+        alert(data);      
+              /* В переменной data содержится ответ от index.php. */
+	}
+});
     
    }
     
