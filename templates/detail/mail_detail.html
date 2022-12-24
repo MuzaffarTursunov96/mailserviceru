@@ -191,33 +191,33 @@
    function sent_message(msg_id,b,c){
     
     // var url = $("#message-"+msg_id).data('url');
-    var url1="https://probe.fbrq.cloud/v1/send/"+msg_id
+    var url="https://probe.fbrq.cloud/v1/send/"+msg_id
     console.log(msg_id,b,c);
     // alert(url);
-    // $.ajax({
-	// url: url,         /* Куда пойдет запрос */
-	// method: 'post',
-    // headers:{
-    //     'accept': 'application/json',
-    //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleH…lciJ9.qJGWmvW27mLt-zAgQSV3C6adgxzZ3Ac9dCSlVvywdUc',
-    //     'Content-Type': 'application/json'
-    // },
-    // data:{
-    //     "id": messages2.customer.id,
-    //     "phone": messages2.customer.phone_number,
-    //     "text": messages2.mail.text_approval
-    // } ,   /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
-	// success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-	// 	console.log(data);
-    //     alert(data);      
-    //           /* В переменной data содержится ответ от index.php. */
-	// },
-    // error: function(data){
-    //     console.log(data);
-    //     alert(data);
-    // }
+    $.ajax({
+	url: url,         /* Куда пойдет запрос */
+	method: 'post',
+    headers:{
+        'accept': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleH…lciJ9.qJGWmvW27mLt-zAgQSV3C6adgxzZ3Ac9dCSlVvywdUc',
+        'Content-Type': 'application/json'
+    },
+    data:{
+        "id": messages2.customer.id,
+        "phone": messages2.customer.phone_number,
+        "text": messages2.mail.text_approval
+    } ,   /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
+	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+		console.log(data);
+        alert(data);      
+              /* В переменной data содержится ответ от index.php. */
+	},
+    error: function(data){
+        console.log(data);
+        alert(data);
+    }
     
-// });
+});
     
    }
     
