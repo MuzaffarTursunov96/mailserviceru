@@ -325,6 +325,7 @@ def mail_sent(request,pk):
   return JsonResponse({'msg':msg,'status':status})
 
 def message_sent(request,pk):
+  return JsonResponse({'msg':'sd','status':"salom"})
   if Messages.objects.filter(id=pk).exists():
     messages2 = Messages.objects.get(pk=pk)
     if send_message_single(messages2):
