@@ -189,7 +189,7 @@
                             {%else%}
                             <td><button type="button" class="btn btn-info m-2 btn-sm">Processing</button></td>
                             {%endif%}
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' active.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' active.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' active.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' active.id %}"><button type="button" class="btn btn-danger m-2 btn-sm" onclick="return confirm('Are you sure delete this Mail?')"><i class="fa fa-trash"></i> Delete</button></a></td>
                         </tr>
                         {%endfor%}
                     </tbody>
@@ -233,7 +233,7 @@
                             {%else%}
                             <td><button type="button" class="btn btn-info m-2 btn-sm">Processing</button></td>
                             {%endif%}
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' active.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' active.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' active.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' active.id %}"><button type="button" class="btn btn-danger m-2 btn-sm" onclick="return confirm('Are you sure delete this Mail?')"><i class="fa fa-trash"></i> Delete</button></a></td>
                         </tr>
                         {%endfor%}
                     </tbody>
@@ -283,7 +283,7 @@
                                 {{mail.status_count}}
 
                             </td>
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' mail.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' mail.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' mail.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'mail_delete' mail.id %}"><button type="button" class="btn btn-danger m-2 btn-sm" onclick="return confirm('Are you sure delete this Mail?')"><i class="fa fa-trash"></i> Delete</button></a></td> 
                             
                         </tr>
                         {%endfor%}
@@ -369,7 +369,7 @@
                             <td><button type="button" class="btn btn-info m-2 btn-sm">To be sent</button></td>
                             {%endif%}
                             {%endcomment%}
-                            <td><a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"><i class="fa fa-trash"></i> Delete</button></a></td> 
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'message_detail' message.id %}"><i class="fa fa-eye"></i> Detail</a><a href="{% url 'message_delete' message.id %}"><button type="button" class="btn btn-danger m-2 btn-sm" onclick="return confirm('Are you sure delete ths Message?')"><i class="fa fa-trash"></i> Delete</button></a></td> 
                             
                         </tr>
                         {%endfor%}
