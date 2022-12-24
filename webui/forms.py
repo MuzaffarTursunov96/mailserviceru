@@ -87,6 +87,10 @@ class MessageForm(forms.ModelForm):
     fields =['created_date_to_send','status','mail','customer']
 
 class CustomerForm(forms.ModelForm):
+  timezones2 =[(timezone,timezone) for timezone in timezones]
+  CHOICES= tuple(timezones2)
+  timezone = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
+
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
