@@ -52,7 +52,12 @@ def my_profile(request,pk):
             profile.save()
             form =ProfileForm(instance=profile)
     else:
-        form =ProfileForm()
+        if UserProfile.objects.filter(user=user).exists():
+            profile =UserProfile.objects.get(user=user)
+            form =ProfileForm(instance=profile)
+        else:
+            form =ProfileForm()
+
     context={
         # 'profile':profile,
         'form':form
