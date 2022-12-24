@@ -10,9 +10,16 @@ timezones = pytz.all_timezones
 
 
 class MailForm(forms.ModelForm):
-  # start_date =forms.DateField(widget=widgets.SelectDateWidget)
-  # end_date =forms.DateField(widget=widgets.SelectDateWidget)
-
+  start_date =forms.DateField(
+        initial=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        widget=forms.widgets.DateInput(
+            attrs={'type': 'date'})
+    )
+  end_date =forms.DateField(
+        initial=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        widget=forms.widgets.DateInput(
+            attrs={'type': 'date'})
+    )
   def clean(self):
     cleaned_data = super(MailForm, self).clean()
     end_date = cleaned_data['end_date']
