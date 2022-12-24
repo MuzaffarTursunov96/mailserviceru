@@ -19,27 +19,29 @@
             <div class="nav-item dropdown">
                 <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="{% url 'add_mail' %}" class="dropdown-item">Add Mail</a>
-                    <a href="{% url 'add_customer' %}" class="dropdown-item">Add Customer</a>
-                    <a href="{% url 'add_message' %}" class="dropdown-item">Add Message</a>
-                    <a href="{% url 'button' %}" class="dropdown-item">Buttons</a>
+                    <a href="{% url 'mail_list' %}" class="dropdown-item">Maisl</a>
+                    <a href="{% url 'customer_list' %}" class="dropdown-item">Customers</a>
+                    <a href="{% url 'message_list' %}" class="dropdown-item">Messages</a>
+                    <!-- <a href="{% url 'button' %}" class="dropdown-item">Buttons</a>
                     <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
-                    <a href="{% url 'elements' %}" class="dropdown-item">Other Elements</a>
+                    <a href="{% url 'elements' %}" class="dropdown-item">Other Elements</a> -->
                 </div>
             </div>
-            <a href="{% url 'widgets' %}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-            <a href="{% url 'forms' %}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-            <a href="{% url 'tables' %}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-            <a href="{% url 'charts' %}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-            <div class="nav-item dropdown">
+            <a href="{% url 'add_mail' %}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Add Mail</a>
+            <a href="{% url 'add_customer' %}" class="nav-item nav-link"> <i class="fa-duotone fa-truck-clock me-2"></i>Add Customer</a>
+            <a href="{% url 'add_message' %}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Add Message</a>
+            <a href="{% url 'forms' %}" class="nav-item nav-link"><i class="fa-solid fa-paper-plane me-2"></i>Forms</a>
+            <!-- <a href="{% url 'tables' %}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+            <a href="{% url 'charts' %}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
+            <!-- <div class="nav-item dropdown">
                 <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{% url 'login' %}" class="dropdown-item">Sign In</a>
                     <a href="{% url 'singup'%}" class="dropdown-item">Sign Up</a>
-                    <a href="{% url 'not_found' %}" class="dropdown-item">404 Error</a>
-                    <a href="{% url 'blank' %}" class="dropdown-item">Blank Page</a>
+                    <!-- <a href="{% url 'not_found' %}" class="dropdown-item">404 Error</a>
+                    <a href="{% url 'blank' %}" class="dropdown-item">Blank Page</a> -->
                 </div>
-            </div>
+            </div> -->
         </div>
     </nav>
 </div>
