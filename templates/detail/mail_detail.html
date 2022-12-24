@@ -195,7 +195,7 @@
     console.log(msg_id,b,c);
     // alert(url);
     $.ajax({
-	url: url,         /* Куда пойдет запрос */
+	url: url,        
 	method: 'post',
     dataType: "json",
     headers:{
@@ -209,11 +209,9 @@
         "id": a,
         "phone": b,
         "text": c
-    } ,   /* Тип данных в ответе (xml, json, script, html). */     /* Параметры передаваемые в запросе. */
-	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+    } ,  
+	success: function(data){  
 		console.log(data);
-        alert(data);      
-              /* В переменной data содержится ответ от index.php. */
 	},
     error: function(data){
         console.log(data.error);
