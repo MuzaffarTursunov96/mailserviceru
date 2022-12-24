@@ -45,10 +45,12 @@ def my_profile(request,pk):
             form =ProfileForm(data=request.POST,instance=profile)
             if form.is_valid():
                 form.save()
+            else:
+                print(form.errors)
         else:
             profile =UserProfile(user=user)
             profile.save()
-        form =ProfileForm(instance=profile)
+            form =ProfileForm(instance=profile)
     else:
         form =ProfileForm()
     context={
