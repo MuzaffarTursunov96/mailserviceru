@@ -196,13 +196,15 @@
     // alert(url);
     $.ajax({
 	url: url,         /* Куда пойдет запрос */
-	method: 'post',
+	type: 'post',
     crossDomain: true,
     dataType: "jsonp",
     headers:{
         'accept': 'application/json',
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI1NTE0NTIsImlzcyI6ImZhYnJpcXVlIiwibmFtZSI6Im11emFmZmFyX2RldmVsb3BlciJ9.qJGWmvW27mLt-zAgQSV3C6adgxzZ3Ac9dCSlVvywdUc',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+
     },
     data:{
         "id": a,
