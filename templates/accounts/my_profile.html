@@ -17,7 +17,7 @@
                 <div class="col-sm-12 col-xl-6">
                     <div class="bg-secondary rounded h-100 p-4">
                         <h6 class="mb-4">Profile Settings</h6>
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             {%csrf_token%}
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Profile picture</label>
