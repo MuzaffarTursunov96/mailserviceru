@@ -344,9 +344,9 @@ def message_sent(request,pk):
         'Content-Type': 'application/json'
     }
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
+    return JsonResponse({'msg':'sd','status':api_link})
     output = rq.post(api_link, headers=headers,json=data_object)
     time.sleep(5)
-    return JsonResponse({'msg':'sd','status':output})
 
     if output.status_code == 200:
       messages2.status ='message_sent'
