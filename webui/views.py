@@ -327,7 +327,6 @@ def mail_sent(request,pk):
   return JsonResponse({'msg':msg,'status':status})
 
 def message_sent(request,pk):
-  # return JsonResponse({'msg':'sd','status':"salom"})
   if Messages.objects.filter(id=pk).exists():
     messages2 = Messages.objects.get(id=int(pk))
 
@@ -337,6 +336,7 @@ def message_sent(request,pk):
         "phone": messages2.customer.phone_number,
         "text": messages2.mail.text_approval
     }
+    return JsonResponse({'msg':'sd','status':"salom"})
     token =config("TOKEN")
     headers={
         'accept': 'application/json',
