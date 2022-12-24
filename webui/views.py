@@ -55,7 +55,7 @@ def index(request):
       'mails':mails,
       'all_mail':all_mail,
       'total_sent_mails':total_sent_mails,
-      'customer':customers,
+      'customers':customers,
       'messages':messages
   }
   return render(request,'index.html',context)
