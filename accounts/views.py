@@ -8,14 +8,17 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from .forms import ProfileForm
+from django.contrib.auth.decorators import login_required
 
 
 class ListCustomers(generics.ListAPIView):
     queryset = Customer.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
 
 class DetailCustomers(generics.RetrieveAPIView):
     queryset = Customer.objects.all()
+    permission_classes = (IsAuthenticated,)
     serializer_class = CustomerSerializer 
     lookup_url_kwarg='pk'
 
@@ -37,6 +40,8 @@ class DeleteCustomers(generics.DestroyAPIView):
     serializer_class = CustomerSerializer 
     lookup_url_kwarg='pk'
 
+
+@login_required(login_url='login')
 def my_profile(request,pk):
     user =get_object_or_404(User,id=pk)
     if request.method =="POST":

@@ -18,15 +18,15 @@ urlpatterns =[
 
 
     # templates
-    path('elements/',views.elements,name='elements'),
-    path('widgets/',views.widgets,name='widgets'),
-    path('forms/',views.forms,name='forms'),
-    path('tables/',views.tables,name='tables'),
-    path('charts/',views.charts,name='charts'),
-    path('not_found/',views.not_found,name='not_found'),
-    path('button/',views.button,name='button'),
-    path('blank/',views.blank,name='blank'),
-    path('typography/',views.typography,name='typography'),
+    # path('elements/',views.elements,name='elements'),
+    # path('widgets/',views.widgets,name='widgets'),
+    # path('forms/',views.forms,name='forms'),
+    # path('tables/',views.tables,name='tables'),
+    # path('charts/',views.charts,name='charts'),
+    # path('not_found/',views.not_found,name='not_found'),
+    # path('button/',views.button,name='button'),
+    # path('blank/',views.blank,name='blank'),
+    # path('typography/',views.typography,name='typography'),
 
 
 

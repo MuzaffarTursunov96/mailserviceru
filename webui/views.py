@@ -80,6 +80,9 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+
+
+@login_required(login_url='login')
 def forgot_password(request):
   if request.method == 'POST':
     email = request.POST.get('email',None)
@@ -119,6 +122,7 @@ def reset_password_validate(request, uidb64, token):
 
 
 
+@login_required(login_url='login')
 def reset_password(request):
   if request.method == "POST":
     password = request.POST.get('password',None)
@@ -148,39 +152,40 @@ def singup(request):
     return render(request,'signup.html')
 
 
-def elements(requests):
-  return render(requests,'element.html')
+# def elements(requests):
+#   return render(requests,'element.html')
 
-def widgets(requests):
-  return render(requests,'widget.html')
+# def widgets(requests):
+#   return render(requests,'widget.html')
 
-def forms(requests):
-  return render(requests,'form.html')
+# def forms(requests):
+#   return render(requests,'form.html')
 
-def tables(requests):
-  return render(requests,'table.html')
+# def tables(requests):
+#   return render(requests,'table.html')
 
-def charts(requests):
-  return render(requests,'chart.html')
-
-
-
-def not_found(requests):
-  return render(requests,'404.html')
-
-def button(requests):
-  return render(requests,'button.html')
-
-def blank(requests):
-  return render(requests,'blank.html')
-
-def typography(requests):
-  return render(requests,'typography.html')
+# def charts(requests):
+#   return render(requests,'chart.html')
 
 
 
+# def not_found(requests):
+#   return render(requests,'404.html')
+
+# def button(requests):
+#   return render(requests,'button.html')
+
+# def blank(requests):
+#   return render(requests,'blank.html')
+
+# def typography(requests):
+#   return render(requests,'typography.html')
 
 
+
+
+
+@login_required(login_url='login')
 def add_mail(request):
   if request.method =='POST':
     data =request.POST
@@ -196,6 +201,8 @@ def add_mail(request):
   }
   return render(request,'elements/add_mail.html',context)
 
+
+@login_required(login_url='login')
 def add_message(request):
   if request.method =='POST':
     data =request.POST
@@ -211,6 +218,8 @@ def add_message(request):
   }
   return render(request,'elements/add_message.html',context)
 
+
+@login_required(login_url='login')
 def add_customer(request):
   if request.method =='POST':
     data =request.POST
@@ -230,6 +239,7 @@ def add_customer(request):
 
 # Details
 
+@login_required(login_url='login')
 def customer_detail(request,pk):
   customer =  get_object_or_404(Customer,pk=pk)
   if request.method =='POST':
@@ -245,6 +255,8 @@ def customer_detail(request,pk):
   }
   return render(request,'detail/customer_detail.html',context)
   
+
+@login_required(login_url='login')
 def message_detail(request,pk):
   message =  get_object_or_404(Messages,pk=pk)
   if request.method =='POST':
@@ -263,6 +275,8 @@ def message_detail(request,pk):
   return render(request,'detail/message_detail.html',context)
 
 
+
+@login_required(login_url='login')
 def mail_detail(request,pk):
   mail =  get_object_or_404(Mails,pk=pk)
   if request.method =='POST':
@@ -282,6 +296,8 @@ def mail_detail(request,pk):
 
 
 # list
+
+@login_required(login_url='login')
 def mail_list(request):
   if 'search' in request.GET:
     search =request.GET.get('search')
@@ -293,6 +309,8 @@ def mail_list(request):
   }
   return render(request,'list/mail_list.html',context)
 
+
+@login_required(login_url='login')
 def customer_list(request):
   if 'search' in request.GET:
     search =request.GET.get('search')
@@ -305,6 +323,8 @@ def customer_list(request):
   return render(request,'list/customer_list.html',context)
 
 
+
+@login_required(login_url='login')
 def message_list(request):
   if 'search' in request.GET:
     search =request.GET.get('search')
@@ -317,6 +337,8 @@ def message_list(request):
   return render(request,'list/message_list.html',context)
 
 
+
+@login_required(login_url='login')
 def customer_delete(request,pk):
   customer =  get_object_or_404(Customer,pk=pk)
   customer.delete()
@@ -328,6 +350,8 @@ def message_delete(request,pk):
   return redirect('message_list')
 
 
+
+@login_required(login_url='login')
 def mail_delete(request,pk):
   mail =  get_object_or_404(Mails,pk=pk)
   mail.delete()
@@ -350,6 +374,8 @@ def mail_sent(request,pk):
 
   return JsonResponse({'msg':msg,'status':status})
 
+
+@login_required(login_url='login')
 def message_sent(request,pk):
   if Messages.objects.filter(id=pk).exists():
     messages2 = Messages.objects.get(id=int(pk))
@@ -368,8 +394,8 @@ def message_sent(request,pk):
     }
     api_link = "https://probe.fbrq.cloud/v1/send/{a}".format(a=messages2.id)
     output = requests.post(api_link, headers=headers,json=data_object)
-    return JsonResponse({'msg':data_object,'status':output})
-    time.sleep(5)
+    # return JsonResponse({'msg':data_object,'status':output})
+    # time.sleep(5)
 
     if output.status_code == 200:
       messages2.status ='message_sent'
