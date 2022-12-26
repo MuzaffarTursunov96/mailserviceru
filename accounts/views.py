@@ -55,8 +55,8 @@ def my_profile(request,pk):
     form =ProfileForm(instance =profile) 
 
     if request.method =="POST":
-        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         uform = UserForm(request.POST,instance=profile)
+        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         messages.error(request,"validd start")
         # messages.error(request,uform)
         if u_form.is_valid():
