@@ -9,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 class ListCustomers(generics.ListAPIView):
@@ -56,7 +57,7 @@ def my_profile(request,pk):
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         if formupdate.is_valid():
             formupdate.save()
-            # messgaes
+            messages.info(request,'Updated successfully!')
             return redirect('my_profile',pk)
         
     
