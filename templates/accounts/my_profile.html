@@ -18,7 +18,7 @@
                 <h6 class="mb-4">Profile Settings</h6>
                 {%csrf_token%}
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
+                        <div class="bg-secondary rounded h-100 p-2">
                                 <div class="mb-3">
                                     <label for="first_name" class="form-label">First Name</label>
                                     {{uform.first_name}}
@@ -53,14 +53,10 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
+                        <div class="bg-secondary rounded h-100 p-2">
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Profile picture</label>
                                 {{form.profile_picture}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone_code" class="form-label">Address</label>
-                                {{form.address}}
                             </div>
                             <div class="mb-3">
                                 <label for="teg" class="form-label">Country</label>
