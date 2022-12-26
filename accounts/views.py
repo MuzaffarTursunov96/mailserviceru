@@ -59,7 +59,7 @@ def my_profile(request,pk):
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         messages.error(request,"validd start")
         # messages.error(request,uform)
-        if u_form.is_valid():
+        if uform.is_valid():
             messages.error(request,"validd user")
             user =uform.save(commit=True)
             user.save()
