@@ -64,7 +64,10 @@ def my_profile(request,pk):
             userprofile.user=user
             userprofile.save()
             messages.info(request,'Updated successfully!')
-            return redirect('my_profile',pk)   
+            return redirect('my_profile',pk) 
+        else:
+            messages.error(request,formupdate.errors)  
+            messages.error(request,uform.errors)  
     
     context={
         # 'profile':profile,
