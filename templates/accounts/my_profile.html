@@ -20,25 +20,41 @@
                         <form method="POST" action="{%url 'my_profile' user.id %}" enctype="multipart/form-data">
                             {%csrf_token%}
                             <div class="mb-3">
-                                <label for="phone_number" class="form-label">Profile picture</label>
+                                <label for="first_name" class="form-label">First Name</label>
+                                {{uform.first_name}}
+                                
+                                <label for="last_name" class="form-label">Last Name</label>
+                                {{uform.last_name}}
+                                
+                                <label for="user_name" class="form-label">User Name</label>
+                                {{uform.username}}
+                                
+                                <label for="email" class="form-label">Email</label>
+                                {{uform.email}}
+
+                                <label for="phone_number" class="form-label">Phone Number</label>
+                                {{uform.phone_number}}
+                                
+
+                                <label for="picture" class="form-label">Profile picture</label>
                                 {{form.profile_picture}}
-                                <div id="emailHelp" class="form-text">
+                                
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="phone_code" class="form-label">Address</label>
+                                <label for="Address" class="form-label">Address</label>
                                 {{form.address}}
                             </div>
                             <div class="mb-3">
-                                <label for="teg" class="form-label">Country</label>
+                                <label for="country" class="form-label">Country</label>
                                 {{form.country}}
                             </div>
                             <div class="mb-3">
-                                <label for="timezone" class="form-label">City</label>
+                                <label for="city" class="form-label">City</label>
                                 {{form.city}}
                             </div>
                             <div class="mb-3">
-                                <label for="timezone" class="form-label">Pin code</label>
+                                <label for="pin_code" class="form-label">Pin code</label>
                                 {{form.pin_code}}
                             </div>
                             {% if messages %}

@@ -7,7 +7,7 @@ from .serializers import CustomerSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
-from .forms import ProfileForm
+from .forms import ProfileForm,UserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -51,19 +51,24 @@ def my_profile(request,pk):
         profile =UserProfile(user=user)
         profile.save()
 
+    u_form =UserForm(instance=user)
     form =ProfileForm(instance =profile) 
 
     if request.method =="POST":
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
-        if formupdate.is_valid():
+        uform = UserForm(request.POST,instance=user)
+        if formupdate.is_valid() and u_form.is_valid():
+            user =uform.save(commit=True)
+            user.save()
             userprofile=formupdate.save(commit=True)
-            userprofile.user=request.user
+            userprofile.user=user
             userprofile.save()
             messages.info(request,'Updated successfully!')
             return redirect('my_profile',pk)   
     
     context={
         # 'profile':profile,
-        'form':form
+        'form':form,
+        'uform':u_form
     }
     return render(request,'accounts/my_profile.html',context)
