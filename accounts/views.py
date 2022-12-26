@@ -55,19 +55,11 @@ def my_profile(request,pk):
     form =ProfileForm(instance =profile) 
 
     if request.method =="POST":
-        uform = UserForm(request.POST,instance=profile)
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
-        messages.error(request,"validd start")
-        # messages.error(request,uform)
-        if uform.is_valid():
-            messages.error(request,"validd user")
+        uform = UserForm(request.POST,instance=user)
+        if formupdate.is_valid() and uform.is_valid():
             user =uform.save(commit=True)
             user.save()
-        else:
-            messages.error(request,uform.errors)  
-
-        if formupdate.is_valid():
-            messages.error(request,"validd profile")
             userprofile=formupdate.save(commit=True)
             userprofile.user=user
             userprofile.save()
@@ -75,6 +67,7 @@ def my_profile(request,pk):
             return redirect('my_profile',pk) 
         else:
             messages.error(request,formupdate.errors)  
+            messages.error(request,uform.errors)  
     
     context={
         # 'profile':profile,
