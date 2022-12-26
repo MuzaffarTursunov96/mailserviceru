@@ -54,10 +54,10 @@ def my_profile(request,pk):
     form =ProfileForm(instance =profile)
 
     if request.method =="POST":
-        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
+        data =request.POST
+        data.user =user
+        formupdate =ProfileForm(data,request.FILES,instance=profile)
         if formupdate.is_valid():
-            formupdate.save(commit=True)
-            formupdate.user =user
             formupdate.save()
             messages.info(request,'Updated successfully!')
             return redirect('my_profile',pk)
