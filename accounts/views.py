@@ -51,20 +51,30 @@ def my_profile(request,pk):
         profile =UserProfile(user=user)
         profile.save()
 
-    form =ProfileForm(instance =profile)
+    form =ProfileForm(instance =profile) 
 
     if request.method =="POST":
-        data =request.POST
-        data.user =user
-        formupdate =ProfileForm(data,request.FILES,instance=profile)
+        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         if formupdate.is_valid():
-            formupdate.save()
+            userprofile=formupdate.save(commit=True)
+            userprofile.user=request.user
+            userprofile.save()
             messages.info(request,'Updated successfully!')
-            return redirect('my_profile',pk)
-        
+            return redirect('my_profile',pk)   
     
     context={
         # 'profile':profile,
         'form':form
     }
     return render(request,'accounts/my_profile.html',context)
+
+def profile_update(request):
+    
+    if request.method =="POST":
+        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
+        if formupdate.is_valid():
+            userprofile=formupdate.save(commit=True)
+            userprofile.user=request.user
+            userprofile.save()
+            messages.info(request,'Updated successfully!')
+            return redirect('my_profile',pk)
