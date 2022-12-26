@@ -67,14 +67,3 @@ def my_profile(request,pk):
         'form':form
     }
     return render(request,'accounts/my_profile.html',context)
-
-def profile_update(request):
-    
-    if request.method =="POST":
-        formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
-        if formupdate.is_valid():
-            userprofile=formupdate.save(commit=True)
-            userprofile.user=request.user
-            userprofile.save()
-            messages.info(request,'Updated successfully!')
-            return redirect('my_profile',pk)
