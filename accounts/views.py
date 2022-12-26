@@ -56,6 +56,8 @@ def my_profile(request,pk):
     if request.method =="POST":
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         if formupdate.is_valid():
+            formupdate.save(commit=True)
+            formupdate.user =user
             formupdate.save()
             messages.info(request,'Updated successfully!')
             return redirect('my_profile',pk)
