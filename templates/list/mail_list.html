@@ -48,7 +48,7 @@
                             {%endif%}
                             <td><a class="btn btn-sm btn-primary" href="{% url 'mail_detail' mail.id %}"><i class="fa fa-eye"></i> Detail</a>
                                 <a href="{% url 'mail_delete' mail.id %}"><button type="button" class="btn btn-danger m-2 btn-sm"onclick="return confirm('Are you sure delete this Mail?')"><i class="fa fa-trash"></i> Delete</button></a>
-                                <button type="button" class="btn btn-info m-2 btn-sm"  id=""data-url=""><i class="fa fa-mail-forward"></i> Send</button>
+                                <button type="button" class="btn btn-warning m-2 btn-sm"  id=""data-url=""><i class="fa fa-mail-forward"></i> Send</button>
                             </td> 
                             
                         </tr>
