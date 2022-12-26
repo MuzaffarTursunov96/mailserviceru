@@ -62,6 +62,7 @@ def my_profile(request,pk):
         if u_form.is_valid():
             messages.error(request,"validd user")
             user =uform.save(commit=True)
+            user.role=User.CUSTOMER
             user.save()
         else:
             messages.error(request,uform.errors)  
