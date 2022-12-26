@@ -57,6 +57,8 @@ def my_profile(request,pk):
     if request.method =="POST":
         formupdate =ProfileForm(request.POST,request.FILES,instance=profile)
         uform = UserForm(request.POST,instance=user)
+        messages.error(request,formupdate)
+        messages.error(request,uform)
         if formupdate.is_valid() and u_form.is_valid():
             user =uform.save(commit=True)
             user.save()
