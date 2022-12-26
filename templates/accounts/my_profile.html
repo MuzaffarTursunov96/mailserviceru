@@ -39,18 +39,6 @@
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 {{uform.phone_number}}
                             </div>
-                            
-                            {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}      
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-2">
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Profile picture</label>
                                 {{form.profile_picture}}
@@ -67,6 +55,13 @@
                                 <label for="timezone" class="form-label">Pin code</label>
                                 {{form.pin_code}}
                             </div>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}      
                             <button type="submit" class="btn btn-primary">Update Profile</button>
                         </div>
                     </div>
